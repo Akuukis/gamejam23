@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f;
+    public float movementSpeed = 5f;
+
+    [Header("Grid Size")]
+    public int xValue = 1;
+    public int zValue = 1;
 
     private float vDirection;
     private float hDirection;
 
-    private bool isMoving = false;
+    public bool isMoving = false;
 
-    public Transform turret;
+    private Transform turret;
+    public Collider col;
+    public Collider trigger;
+
+    public bool canMove = true;
 
     void Start()
     {
@@ -20,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(canMove)
+        {
         if(Input.GetAxis("Vertical") != 0 && isMoving == false)
         {
             isMoving = true;
@@ -34,6 +44,10 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(GoHorizontaly());
         }
 
+        if(isMoving)
+            trigger.enabled = true;
+        else
+            trigger.enabled = false;
 
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 11f;
@@ -42,27 +56,36 @@ public class PlayerController : MonoBehaviour
         Vector3 turretOrientation = worldMouse - turret.position;
         turretOrientation.y = 0f;
         turret.forward = turretOrientation;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player" && other.GetComponent<PlayerController>().isMoving == false)
+        {
+            other.GetComponent<PlayerImpact>().GotHit();
+            col.enabled = false;
+        }
     }
 
     IEnumerator GoVerticaly()
     {
         Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * vDirection);
 
-        if(newPosition.z > 3.5f)
-            newPosition.z = 3.5f;
+        if(newPosition.z > 3.5f * zValue)
+            newPosition.z = 3.5f * zValue;
 
-        if(newPosition.z < -3.5f)
-            newPosition.z = -3.5f;
+        if(newPosition.z < -3.5f * zValue)
+            newPosition.z = -3.5f * zValue;
 
         while(transform.position != newPosition)
         {
-            float step = speed * Time.deltaTime;
+            float step = movementSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
             yield return null;
         }
 
         isMoving = false;
-        
         yield return null;
     }
 
@@ -70,21 +93,20 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 newPosition = new Vector3(transform.position.x + 3.5f * hDirection, transform.position.y, transform.position.z);
 
-        if(newPosition.x > 3.5f)
-            newPosition.x = 3.5f;
+        if(newPosition.x > 3.5f * xValue)
+            newPosition.x = 3.5f * xValue;
 
-        if(newPosition.x < -3.5f)
-            newPosition.x = -3.5f;
+        if(newPosition.x < -3.5f * xValue)
+            newPosition.x = -3.5f * xValue;
 
         while(transform.position != newPosition)
         {
-            float step = speed * Time.deltaTime;
+            float step = movementSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
             yield return null;
         }
 
         isMoving = false;
-        
         yield return null;
     }
 }
