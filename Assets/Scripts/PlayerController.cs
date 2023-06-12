@@ -34,17 +34,14 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(GoHorizontaly());
         }
 
-        Vector3 positionOnScreen = Camera.main.WorldToViewportPoint(turret.position);
-        Vector3 mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-        turret.rotation =  Quaternion.Euler (new Vector3(0f, -angle, 0f));
 
-        Debug.DrawLine(positionOnScreen, mouseOnScreen);
-    }
- 
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
-    {
-        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 11f;
+        Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+        
+        Vector3 turretOrientation = worldMouse - turret.position;
+        turretOrientation.y = 0f;
+        turret.forward = turretOrientation;
     }
 
     IEnumerator GoVerticaly()
