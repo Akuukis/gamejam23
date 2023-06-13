@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class TestScript : MonoBehaviour
 {
     public float movementSpeed = 5f;
 
@@ -34,26 +34,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKey(KeyCode.O) && isMoving == false)
+        {
+            isMoving = true;
+
+            activeCorountine = GoHorizontaly(-1f);
+            StartCoroutine(activeCorountine);
+        }
+
+        if(Input.GetKey(KeyCode.P) && isMoving == false)
+        {
+            isMoving = true;
+
+            activeCorountine = GoHorizontaly(1f);
+            StartCoroutine(activeCorountine);
+        }
+
         if(canMove)
         {
-            if(Input.GetAxis("Vertical") != 0 && isMoving == false)
-            {
-                isMoving = true;
-                vDirection = Input.GetAxisRaw("Vertical");
-
-                activeCorountine = GoVerticaly();
-                StartCoroutine(activeCorountine);
-            }
-
-            if(Input.GetAxis("Horizontal") != 0 && isMoving == false)
-            {
-                isMoving = true;
-                hDirection = Input.GetAxisRaw("Horizontal");
-
-                activeCorountine = GoHorizontaly();
-                StartCoroutine(activeCorountine);
-            }
-
             if(isMoving)
                 trigger.enabled = true;
             else
@@ -67,18 +65,10 @@ public class PlayerController : MonoBehaviour
             turretOrientation.y = 0f;
             turret.forward = turretOrientation;
         }
-        // else
-        // {
-        //     if(!isInImpact)
-        //     {
-        //         float time = Mathf.PingPong(Time.time * movementSpeed, 1);
-        //         this.transform.position = Vector3.Lerp(new Vector3(3.5f, this.transform.position.y, -3.5f), new Vector3 (-3.5f, this.transform.position.y, -3.5f), time);
-        //     }
-        // }
 
         if(isGrinding)
         {
-            if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+            if(Input.GetKey(KeyCode.O) == false && Input.GetKey(KeyCode.P) == false)
             {
                 isGrinding = false;
                 StartCoroutine(MoveBackToOldPosition());
@@ -88,16 +78,36 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == false)
+        if(other.tag == "Player" && other.GetComponent<PlayerController>().isMoving == false)
         {
             other.GetComponent<PlayerImpact>().GotHit();
             col.enabled = false;
         }
 
-        if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == true)
+        if(other.tag == "Player" && other.GetComponent<PlayerController>().isMoving == true)
         {
             StopCoroutine(activeCorountine);
             isGrinding = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+
+        if(isGrinding == false && other.GetComponent<PlayerController>().isGrinding == true)
+        {
+            Debug.Log(this + " Lost the position!");
+
+            gameObject.GetComponent<PlayerImpact>().LooseThePosition();
+        }
+        else if(isGrinding == true && other.GetComponent<PlayerController>().isGrinding == false)
+        {
+            Debug.Log(this + " Won the position!");
+
+            activeCorountine = WinThePosition();
+            StartCoroutine(activeCorountine);
+            //go to new position
+            isGrinding = false;
         }
     }
 
@@ -123,10 +133,10 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator GoHorizontaly()
+    IEnumerator GoHorizontaly(float xd)
     {
         oldPosition = transform.position;
-        newPosition = new Vector3(transform.position.x + 3.5f * hDirection, transform.position.y, transform.position.z);
+        newPosition = new Vector3(transform.position.x + 3.5f * xd, transform.position.y, transform.position.z);
 
         if(newPosition.x > 3.5f * xValue)
             newPosition.x = 3.5f * xValue;
@@ -151,6 +161,19 @@ public class PlayerController : MonoBehaviour
         {
             float step = movementSpeed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, oldPosition, step);
+            yield return null;
+        }
+
+        isMoving = false;
+        yield return null;
+    }
+
+    IEnumerator WinThePosition()
+    {
+        while(transform.position != newPosition)
+        {
+            float step = movementSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
             yield return null;
         }
 

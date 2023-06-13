@@ -659,7 +659,7 @@ MonoBehaviour:
   xValue: 1
   zValue: 1
   isMoving: 0
-  isInImpact: 0
+  isGrinding: 0
   col: {fileID: 1502080727}
   trigger: {fileID: 1502080732}
   canMove: 1
@@ -801,10 +801,10 @@ GameObject:
   - component: {fileID: 1765736645}
   - component: {fileID: 1765736644}
   - component: {fileID: 1765736643}
-  - component: {fileID: 1765736642}
   - component: {fileID: 1765736647}
   - component: {fileID: 1765736648}
   - component: {fileID: 1765736649}
+  - component: {fileID: 1765736650}
   m_Layer: 0
   m_Name: TestOpponent
   m_TagString: Player
@@ -812,26 +812,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1765736642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1765736641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c89b1e6836347343b96a7d9c44af354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0.5
-  xValue: 3
-  zValue: 3
-  isMoving: 1
-  isInImpact: 0
-  col: {fileID: 1765736643}
-  trigger: {fileID: 1765736648}
-  canMove: 0
 --- !u!65 &1765736643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -953,6 +933,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1502080730}
+--- !u!114 &1765736650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765736641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de07c7e050a1cba44ab68207cb37bd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
+  xValue: 1
+  zValue: 1
+  isMoving: 0
+  isGrinding: 0
+  col: {fileID: 1765736643}
+  trigger: {fileID: 1765736648}
+  canMove: 1
 --- !u!1 &1978589391
 GameObject:
   m_ObjectHideFlags: 0
