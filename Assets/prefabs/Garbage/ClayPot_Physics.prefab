@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6326980865648350711}
   - component: {fileID: 3340356231209987363}
   m_Layer: 0
-  m_Name: ClayPot
+  m_Name: ClayPot_Physics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,8 +113,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 9f9134b5c52a6b7418a2e2b297a72c15, type: 3}
   m_PrefabInstance: {fileID: 6326980864217811515}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1881210722930427453
-CapsuleCollider:
+--- !u!54 &3877893707863213352
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2774588604575109043}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
+--- !u!65 &1551916488138968399
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -123,9 +139,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.447877
-  m_Height: 0.893973
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 0.895754, y: 0.893973, z: 0.895754}
   m_Center: {x: 0, y: 0.4469865, z: 0}
 --- !u!4 &5784674634571509200 stripped
 Transform:
