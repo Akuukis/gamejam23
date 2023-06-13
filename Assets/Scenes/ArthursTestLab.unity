@@ -635,7 +635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502080726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -3.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -656,13 +656,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  xValue: 1
+  xValue: 2
   zValue: 1
+  isAccelerating: 0
   isMoving: 0
   isGrinding: 0
   col: {fileID: 1502080727}
   trigger: {fileID: 1502080732}
-  canMove: 1
+  canBeDamaged: 1
+  oldPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1502080732
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -883,7 +885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765736641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -915,10 +917,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765736641}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.7, y: 1, z: 1.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1765736649
 MonoBehaviour:
@@ -948,11 +950,13 @@ MonoBehaviour:
   movementSpeed: 5
   xValue: 1
   zValue: 1
+  isAccelerating: 0
   isMoving: 0
   isGrinding: 0
   col: {fileID: 1765736643}
   trigger: {fileID: 1765736648}
-  canMove: 1
+  canBeDamaged: 1
+  oldPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1978589391
 GameObject:
   m_ObjectHideFlags: 0

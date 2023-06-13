@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5f;
 
@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     private float vDirection;
     private float hDirection;
 
+    public bool isAccelerating = false;
     public bool isMoving = false;
     public bool isGrinding = false;
 
@@ -20,9 +21,10 @@ public class Controller : MonoBehaviour
     public Collider col;
     public Collider trigger;
 
-    public bool canMove = true;
+    public bool canBeDamaged = true;
 
-    private Vector3 oldPosition;
+    [HideInInspector]
+    public Vector3 oldPosition;
     private Vector3 newPosition;
 
     private IEnumerator activeCorountine;
@@ -34,9 +36,10 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        if(canMove)
+        if(Input.GetAxis("Vertical") != 0)
         {
-            if(Input.GetAxis("Vertical") != 0 && isMoving == false)
+            isAccelerating = true;
+            if(isMoving == false)
             {
                 isMoving = true;
                 vDirection = Input.GetAxisRaw("Vertical");
@@ -44,7 +47,11 @@ public class Controller : MonoBehaviour
                 activeCorountine = GoVerticaly();
                 StartCoroutine(activeCorountine);
             }
+        }
 
+        if(Input.GetAxis("Horizontal") != 0)
+        {
+            isAccelerating = true;
             if(Input.GetAxis("Horizontal") != 0 && isMoving == false)
             {
                 isMoving = true;
@@ -53,51 +60,82 @@ public class Controller : MonoBehaviour
                 activeCorountine = GoHorizontaly();
                 StartCoroutine(activeCorountine);
             }
-
-            if(isMoving)
-                trigger.enabled = true;
-            else
-                trigger.enabled = false;
-
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 11f;
-            Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
-            
-            Vector3 turretOrientation = worldMouse - turret.position;
-            turretOrientation.y = 0f;
-            turret.forward = turretOrientation;
         }
-        // else
-        // {
-        //     if(!isInImpact)
-        //     {
-        //         float time = Mathf.PingPong(Time.time * movementSpeed, 1);
-        //         this.transform.position = Vector3.Lerp(new Vector3(3.5f, this.transform.position.y, -3.5f), new Vector3 (-3.5f, this.transform.position.y, -3.5f), time);
-        //     }
-        // }
+
+        if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        {
+            isAccelerating = false;
+        }
+
+        if(isMoving)
+            trigger.enabled = true;
+        else
+            trigger.enabled = false;
+
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 11f;
+        Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+        
+        Vector3 turretOrientation = worldMouse - turret.position;
+        turretOrientation.y = 0f;
+        turret.forward = turretOrientation;
 
         if(isGrinding)
         {
             if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             {
                 isGrinding = false;
-                StartCoroutine(MoveBackToOldPosition());
+                activeCorountine = MoveBackToOldPosition();
+                StartCoroutine(activeCorountine);
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == false)
+        if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == false && canBeDamaged == true)
         {
+            canBeDamaged = false;
+            trigger.enabled = false;
+            Debug.Log(other + " was hit away!");
             other.GetComponent<PlayerImpact>().GotHit();
-            col.enabled = false;
+            // col.enabled = false;
         }
-
-        if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == true)
+        else if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == true && canBeDamaged == true)
         {
+            canBeDamaged = false;
+            trigger.enabled = false;
+            if(isAccelerating == false && other.GetComponent<TestScript>().isAccelerating == false)
+            {
+                Debug.Log(this + " had a bounce!");
+                StopCoroutine(activeCorountine);
+                activeCorountine = MoveBackToOldPosition();
+                StartCoroutine(activeCorountine);
+            }
+            else if(isAccelerating == true && other.GetComponent<TestScript>().isAccelerating == true)
+            {
+                Debug.Log(this + " is fighting back!");
+                StopCoroutine(activeCorountine);
+                isGrinding = true;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+
+        if(isGrinding == false && other.GetComponent<TestScript>().isGrinding == true)
+        {
+            Debug.Log(this + " has lost!");
             StopCoroutine(activeCorountine);
-            isGrinding = true;
+            gameObject.GetComponent<PlayerImpact>().LooseThePosition();
+        }
+        else if(isGrinding == true && other.GetComponent<TestScript>().isGrinding == false)
+        {
+            Debug.Log(this + " has won!");
+            StopCoroutine(activeCorountine);
+            activeCorountine = WinThePosition();
+            StartCoroutine(activeCorountine);
         }
     }
 
@@ -120,6 +158,7 @@ public class Controller : MonoBehaviour
         }
 
         isMoving = false;
+        canBeDamaged = true;
         yield return null;
     }
 
@@ -142,11 +181,13 @@ public class Controller : MonoBehaviour
         }
 
         isMoving = false;
+        canBeDamaged = true;
         yield return null;
     }
 
     IEnumerator MoveBackToOldPosition()
     {
+        Debug.Log(oldPosition);
         while(transform.position != oldPosition)
         {
             float step = movementSpeed * Time.deltaTime;
@@ -155,6 +196,22 @@ public class Controller : MonoBehaviour
         }
 
         isMoving = false;
+        canBeDamaged = true;
+        yield return null;
+    }
+
+    IEnumerator WinThePosition()
+    {
+        Debug.Log(newPosition);
+        while(transform.position != newPosition)
+        {
+            float step = movementSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        isMoving = false;
+        canBeDamaged = true;
         yield return null;
     }
 }
