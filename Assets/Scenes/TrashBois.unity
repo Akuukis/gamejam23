@@ -555,6 +555,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5053026749019202065, guid: c6d7d6eb81d8ae841b9d2208cb5a9918, type: 3}
+      propertyPath: m_Targets.Array.data[0].target
+      value: 
+      objectReference: {fileID: 845166297}
+    - target: {fileID: 5053026749019202065, guid: c6d7d6eb81d8ae841b9d2208cb5a9918, type: 3}
+      propertyPath: m_Targets.Array.data[1].target
+      value: 
+      objectReference: {fileID: 1365870751}
     - target: {fileID: 5095395613522679920, guid: c6d7d6eb81d8ae841b9d2208cb5a9918, type: 3}
       propertyPath: m_RootOrder
       value: 0
