@@ -78,13 +78,13 @@ public class TestScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && other.GetComponent<PlayerController>().isMoving == false)
+        if(other.tag == "Player" && other.GetComponent<Controller>().isMoving == false)
         {
             other.GetComponent<PlayerImpact>().GotHit();
             col.enabled = false;
         }
 
-        if(other.tag == "Player" && other.GetComponent<PlayerController>().isMoving == true)
+        if(other.tag == "Player" && other.GetComponent<Controller>().isMoving == true)
         {
             StopCoroutine(activeCorountine);
             isGrinding = true;
@@ -94,13 +94,13 @@ public class TestScript : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
 
-        if(isGrinding == false && other.GetComponent<PlayerController>().isGrinding == true)
+        if(isGrinding == false && other.GetComponent<Controller>().isGrinding == true)
         {
             Debug.Log(this + " Lost the position!");
 
             gameObject.GetComponent<PlayerImpact>().LooseThePosition();
         }
-        else if(isGrinding == true && other.GetComponent<PlayerController>().isGrinding == false)
+        else if(isGrinding == true && other.GetComponent<Controller>().isGrinding == false)
         {
             Debug.Log(this + " Won the position!");
 
