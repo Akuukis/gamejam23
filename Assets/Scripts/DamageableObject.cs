@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class DamageableObject : MonoBehaviour, IDamageable
 {
-    public GameObject impactParticlePrefab;
+    [SerializeField] private float maxHealth = 100f;  // Maximum health value that can be set up in the Inspector
+	[SerializeField] private GameObject deathParticleEffect;  // Particle effect prefab assigned in the Inspector
+    private float currentHealth;
+	public GameObject impactParticlePrefab;
+	
+	private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 	
 	public void TakeDamage(float amount)
     {
@@ -18,5 +26,24 @@ public class DamageableObject : MonoBehaviour, IDamageable
             GameObject impactParticle = Instantiate(impactParticlePrefab, transform.position, Quaternion.identity);
             Destroy(impactParticle, 2f); // Optionally, destroy the particle effect after 2 seconds
         }
+		
+		currentHealth -= amount;
+
+        if (currentHealth <= 0f)
+        {
+            Die();
+        }
+    }
+	
+	private void Die()
+    {
+        // Play particle effect at the position of the object
+        if (deathParticleEffect != null)
+        {
+            Instantiate(deathParticleEffect, transform.position, Quaternion.identity);
+        }
+
+        // Handle the object's death
+        Destroy(gameObject);
     }
 }
