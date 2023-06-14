@@ -40,8 +40,8 @@ public class TestScript : MonoBehaviour
                 isMoving = true;
                 canMove = false;
 
-                activeCorountine = GoVerticaly(-1f);
-                // activeCorountine = GoHorizontaly(-1f);
+                // activeCorountine = GoVerticaly(-1f);
+                activeCorountine = GoHorizontaly(-1f);
                 StartCoroutine(activeCorountine);
             }
         }
@@ -55,8 +55,8 @@ public class TestScript : MonoBehaviour
                 isMoving = true;
                 canMove = false;
 
-                activeCorountine = GoVerticaly(1f);
-                // activeCorountine = GoHorizontaly(1f);
+                // activeCorountine = GoVerticaly(1f);
+                activeCorountine = GoHorizontaly(1f);
                 StartCoroutine(activeCorountine);
             }
         }

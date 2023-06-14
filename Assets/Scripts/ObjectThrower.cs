@@ -11,6 +11,9 @@ public class ObjectThrower : MonoBehaviour
     public float impactDamage = 10f;
     public float maxRotationSpeed = 5f;
 
+    private GameObject objectToThrow;
+    private GameObject thrownObject;
+
     public GameObject GetRandomObjectToThrow()
     {
         if (objectsToThrow.Count == 0)
@@ -23,19 +26,29 @@ public class ObjectThrower : MonoBehaviour
         return objectsToThrow[randomIndex];
     }
 
-    public void ThrowObject()
+    public void CheckObjectToTrhowList()
     {
-        GameObject objectToThrow = GetRandomObjectToThrow();
+        objectToThrow = GetRandomObjectToThrow();
         if (objectToThrow == null)
         {
             return;
         }
 
+        thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
+        thrownObject.transform.parent = gameObject.transform;
+    }
+
+    public void ThrowObject()
+    {
+        
         // Instantiate the selected object to throw
-        GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
+        // GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
+
+        thrownObject.transform.parent = null;
 
         // Apply a random rotation spin to the thrown object
         Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
+        rb.useGravity = true;
         Vector3 randomRotation = Random.insideUnitSphere * maxRotationSpeed;
         rb.angularVelocity = randomRotation;
 

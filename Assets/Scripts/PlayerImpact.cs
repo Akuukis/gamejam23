@@ -93,6 +93,12 @@ public class PlayerImpact : MonoBehaviour
     {
         newPosition = new Vector3(transform.position.x + 3.5f * -hDirection, transform.position.y, transform.position.z);
 
+        if(newPosition.x > 3.5f * xValue)
+            newPosition.x = 3.5f * xValue;
+
+        if(newPosition.x < -3.5f * xValue)
+            newPosition.x = -3.5f * xValue;
+
         while(transform.position != newPosition)
         {
             float step = 7f * Time.deltaTime;

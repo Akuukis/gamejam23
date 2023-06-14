@@ -30,17 +30,19 @@ public class ObjectSpawnController : MonoBehaviour
 
     private void SpawnObjectToThrow()
     {
+        objectThrower.CheckObjectToTrhowList();
+        
         // Get a random object to throw from the ObjectThrower's list
-        GameObject objectToThrow = objectThrower.GetRandomObjectToThrow();
+        // GameObject objectToThrow = objectThrower.GetRandomObjectToThrow();
 
-        if (objectToThrow != null)
-        {
-            // Instantiate the object to throw at the desired position and rotation
-            Instantiate(objectToThrow, transform.position, transform.rotation);
-        }
-        else
-        {
-            Debug.LogWarning("No objects to throw!");
-        }
+        // if (objectToThrow != null)
+        // {
+        //     // Instantiate the object to throw at the desired position and rotation
+        //     Instantiate(objectToThrow, transform.position, transform.rotation);
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("No objects to throw!");
+        // }
     }
 }
