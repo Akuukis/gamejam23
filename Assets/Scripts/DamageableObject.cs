@@ -8,7 +8,9 @@ public class DamageableObject : MonoBehaviour, IDamageable
     [SerializeField] private float maxHealth = 100f;  // Maximum health value that can be set up in the Inspector
 	[SerializeField] private GameObject deathParticleEffect;  // Particle effect prefab assigned in the Inspector
 	[SerializeField] private Slider healthSlider;  // Reference to the UI Slider component assigned in the Inspector
+	[SerializeField] private ParticleSystem[] particleEffectSlots;  // Array of particle effect slots assigned in the Inspector
     private float currentHealth;
+	private float previousHealthPercentage = 1f;  // Variable to store the previous health percentage
 	public GameObject impactParticlePrefab;
 	
 	private void Start()
@@ -38,6 +40,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
         }
 		
 		UpdateHealthBar();
+		UpdateParticleEffects();
     }
 	
 	private void Die()
@@ -61,4 +64,48 @@ public class DamageableObject : MonoBehaviour, IDamageable
             healthSlider.value = normalizedHealth;
         }
     }
+	
+	private void UpdateParticleEffects()
+	{
+		if (particleEffectSlots.Length > 0)
+		{
+			float healthPercentage = currentHealth / maxHealth;
+
+			for (int i = 0; i < particleEffectSlots.Length; i++)
+			{
+				ParticleSystem particleSystem = particleEffectSlots[i];
+
+				if (healthPercentage <= (float)(i + 1) / particleEffectSlots.Length)
+				{
+					// Activate particle effect slot and all its children
+					SetParticleSystemsPlayingState(particleSystem, true);
+				}
+				else if (previousHealthPercentage > (float)(i + 1) / particleEffectSlots.Length)
+				{
+					// Deactivate particle effect slot and all its children
+					SetParticleSystemsPlayingState(particleSystem, false);
+				}
+			}
+
+			previousHealthPercentage = healthPercentage;
+		}
+	}
+
+	private void SetParticleSystemsPlayingState(ParticleSystem particleSystem, bool play)
+	{
+		ParticleSystem[] childParticleSystems = particleSystem.GetComponentsInChildren<ParticleSystem>(true);
+
+		foreach (ParticleSystem childParticleSystem in childParticleSystems)
+		{
+			if (play)
+			{
+				childParticleSystem.Play(true);
+			}
+			else
+			{
+				childParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+			}
+		}
+	}
+
 }

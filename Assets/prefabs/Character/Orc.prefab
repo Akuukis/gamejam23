@@ -90,7 +90,7 @@ MonoBehaviour:
   - {fileID: 5825769053937159072, guid: 7998f96c9a199ca438be8c694e32be1e, type: 3}
   - {fileID: 7376599777269995881, guid: 30653cdd741c8e743b5662833db4942a, type: 3}
   throwAngle: 45
-  throwForce: 10
+  throwForce: 8
   impactDamage: 10
   maxRotationSpeed: 5
 --- !u!1001 &8171066431619461268
