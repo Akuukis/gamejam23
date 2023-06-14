@@ -657,7 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   xValue: 2
-  zValue: 1
+  zValue: 2
   isAccelerating: 0
   isMoving: 0
   isGrinding: 0
@@ -950,7 +950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   xValue: 2
-  zValue: 1
+  zValue: 2
   isAccelerating: 0
   isMoving: 0
   isGrinding: 0

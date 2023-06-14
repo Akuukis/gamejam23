@@ -106,7 +106,7 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.GetComponent<PlayerController>() == true)
             gameObject.GetComponent<PlayerController>().isMoving = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
@@ -134,7 +134,7 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.GetComponent<PlayerController>() == true)
             gameObject.GetComponent<PlayerController>().isMoving = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
@@ -162,7 +162,7 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.name == "Player")
             gameObject.GetComponent<PlayerController>().isMoving = false;
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
@@ -184,7 +184,13 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(1f);
+        if(gameObject.name == "TestOpponent")
+            gameObject.GetComponent<TestScript>().isMoving = false;
+
+        if(gameObject.name == "Player")
+            gameObject.GetComponent<PlayerController>().isMoving = false;
+
+        yield return new WaitForSeconds(0.5f);
         
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;

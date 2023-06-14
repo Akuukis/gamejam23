@@ -41,6 +41,7 @@ public class TestScript : MonoBehaviour
                 canMove = false;
 
                 activeCorountine = GoVerticaly(-1f);
+                // activeCorountine = GoHorizontaly(-1f);
                 StartCoroutine(activeCorountine);
             }
         }
@@ -55,6 +56,7 @@ public class TestScript : MonoBehaviour
                 canMove = false;
 
                 activeCorountine = GoVerticaly(1f);
+                // activeCorountine = GoHorizontaly(1f);
                 StartCoroutine(activeCorountine);
             }
         }
@@ -131,23 +133,6 @@ public class TestScript : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        // if(isGrinding == false && other.GetComponent<PlayerController>().isGrinding == true)
-        // {
-        //     Debug.Log(this + " has lost!");
-        //     StopCoroutine(activeCorountine);
-        //     gameObject.GetComponent<PlayerImpact>().LooseThePosition();
-        // }
-        // else if(isGrinding == true && other.GetComponent<PlayerController>().isGrinding == false)
-        // {
-        //     Debug.Log(this + " has won!");
-        //     StopCoroutine(activeCorountine);
-        //     activeCorountine = WinThePosition();
-        //     StartCoroutine(activeCorountine);
-        // }
-    }
-
     IEnumerator GoVerticaly(float xd)
     {
         oldPosition = transform.position;
@@ -168,7 +153,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
@@ -193,7 +178,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
@@ -209,7 +194,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
@@ -225,7 +210,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }

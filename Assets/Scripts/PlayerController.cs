@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canMove = true;
         yield return null;
     }
