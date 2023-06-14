@@ -16,12 +16,11 @@ public class PlayerController : MonoBehaviour
     public bool isAccelerating = false;
     public bool isMoving = false;
     public bool isGrinding = false;
-
-    private Transform turret;
+    public bool canMove = true;
+    
+    public Transform turret;
     public Collider col;
     public Collider trigger;
-
-    public bool canBeDamaged = true;
 
     [HideInInspector]
     public Vector3 oldPosition;
@@ -29,19 +28,15 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator activeCorountine;
 
-    void Start()
-    {
-        turret = gameObject.transform.Find("Turret");
-    }
-
     void Update()
     {
         if(Input.GetAxis("Vertical") != 0)
         {
             isAccelerating = true;
-            if(isMoving == false)
+            if(isMoving == false && canMove == true)
             {
                 isMoving = true;
+                canMove = false;
                 vDirection = Input.GetAxisRaw("Vertical");
 
                 activeCorountine = GoVerticaly();
@@ -52,9 +47,10 @@ public class PlayerController : MonoBehaviour
         if(Input.GetAxis("Horizontal") != 0)
         {
             isAccelerating = true;
-            if(Input.GetAxis("Horizontal") != 0 && isMoving == false)
+            if(isMoving == false && canMove == true)
             {
                 isMoving = true;
+                canMove = false;
                 hDirection = Input.GetAxisRaw("Horizontal");
 
                 activeCorountine = GoHorizontaly();
@@ -85,38 +81,39 @@ public class PlayerController : MonoBehaviour
             if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             {
                 isGrinding = false;
-                activeCorountine = MoveBackToOldPosition();
-                StartCoroutine(activeCorountine);
+                // activeCorountine = MoveBackToOldPosition();
+                // StartCoroutine(activeCorountine);
             }
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == false && canBeDamaged == true)
+        if(other.tag == "Player")
         {
-            canBeDamaged = false;
+            canMove = false;
             trigger.enabled = false;
-            Debug.Log(other + " was hit away!");
-            other.GetComponent<PlayerImpact>().GotHit();
-            // col.enabled = false;
-        }
-        else if(other.tag == "Player" && other.GetComponent<TestScript>().isMoving == true && canBeDamaged == true)
-        {
-            canBeDamaged = false;
-            trigger.enabled = false;
-            if(isAccelerating == false && other.GetComponent<TestScript>().isAccelerating == false)
+
+            if(other.GetComponent<TestScript>().isMoving == false && isGrinding == false)
             {
-                Debug.Log(this + " had a bounce!");
-                StopCoroutine(activeCorountine);
-                activeCorountine = MoveBackToOldPosition();
-                StartCoroutine(activeCorountine);
+                Debug.Log(other + " was hit away!");
+                other.GetComponent<PlayerImpact>().GotHit();
             }
-            else if(isAccelerating == true && other.GetComponent<TestScript>().isAccelerating == true)
+            else if(other.GetComponent<TestScript>().isMoving == true)
             {
-                Debug.Log(this + " is fighting back!");
-                StopCoroutine(activeCorountine);
-                isGrinding = true;
+                if(isAccelerating == false && other.GetComponent<TestScript>().isAccelerating == false)
+                {
+                    Debug.Log(this + " had a bounce!");
+                    StopCoroutine(activeCorountine);
+                    activeCorountine = MoveBackToOldPosition();
+                    StartCoroutine(activeCorountine);
+                }
+                else if(isAccelerating == true && other.GetComponent<TestScript>().isAccelerating == true)
+                {
+                    Debug.Log(this + " is fighting back!");
+                    StopCoroutine(activeCorountine);
+                    isGrinding = true;
+                }
             }
         }
     }
@@ -124,19 +121,19 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
 
-        if(isGrinding == false && other.GetComponent<TestScript>().isGrinding == true)
-        {
-            Debug.Log(this + " has lost!");
-            StopCoroutine(activeCorountine);
-            gameObject.GetComponent<PlayerImpact>().LooseThePosition();
-        }
-        else if(isGrinding == true && other.GetComponent<TestScript>().isGrinding == false)
-        {
-            Debug.Log(this + " has won!");
-            StopCoroutine(activeCorountine);
-            activeCorountine = WinThePosition();
-            StartCoroutine(activeCorountine);
-        }
+        // if(isGrinding == false && other.GetComponent<TestScript>().isGrinding == true)
+        // {
+        //     Debug.Log(this + " has lost!");
+        //     StopCoroutine(activeCorountine);
+        //     gameObject.GetComponent<PlayerImpact>().LooseThePosition();
+        // }
+        // else if(isGrinding == true && other.GetComponent<TestScript>().isGrinding == false)
+        // {
+        //     Debug.Log(this + " has won!");
+        //     StopCoroutine(activeCorountine);
+        //     activeCorountine = WinThePosition();
+        //     StartCoroutine(activeCorountine);
+        // }
     }
 
     IEnumerator GoVerticaly()
@@ -158,7 +155,8 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
-        canBeDamaged = true;
+        yield return new WaitForSeconds(1f);
+        // canMove = true;
         yield return null;
     }
 
@@ -181,7 +179,8 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
-        canBeDamaged = true;
+        yield return new WaitForSeconds(1f);
+        canMove = true;
         yield return null;
     }
 
@@ -196,7 +195,8 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
-        canBeDamaged = true;
+        yield return new WaitForSeconds(1f);
+        // canMove = true;
         yield return null;
     }
 
@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
-        canBeDamaged = true;
+        // canBeDamaged = true;
         yield return null;
     }
 }

@@ -26,6 +26,15 @@ public class PlayerImpact : MonoBehaviour
 
     public void GotHit()
     {
+        if(gameObject.GetComponent<TestScript>() == true)
+        {
+            gameObject.GetComponent<TestScript>().canMove = false;
+        }
+        else if(gameObject.GetComponent<PlayerController>() == true)
+        {
+            gameObject.GetComponent<PlayerController>().canMove = false;
+        }
+
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
         Vector3 opponent = player.position - transform.position;
@@ -35,14 +44,12 @@ public class PlayerImpact : MonoBehaviour
 
         if(hDirection == 1f || hDirection == -1f)
         {
-            Debug.Log(this + ": horizontal" + hDirection);
             activeCorountine = HorizontalImpact();
             StartCoroutine(activeCorountine);
         }
 
         if(vDirection == 1f || vDirection == -1f)
         {
-            Debug.Log(this + ": vertical" + vDirection);
             activeCorountine = VerticalImpact();
             StartCoroutine(activeCorountine);
         }
@@ -86,12 +93,6 @@ public class PlayerImpact : MonoBehaviour
     {
         newPosition = new Vector3(transform.position.x + 3.5f * -hDirection, transform.position.y, transform.position.z);
 
-        // if(newPosition.x > 3.5f * xValue)
-        //     newPosition.x = 3.5f * xValue;
-
-        // if(newPosition.x < -3.5f * xValue)
-        //     newPosition.x = -3.5f * xValue;
-
         while(transform.position != newPosition)
         {
             float step = 7f * Time.deltaTime;
@@ -99,20 +100,20 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        if(gameObject.name == "TestOpponent")
-        {
+        if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().isMoving = false;
-            gameObject.GetComponent<TestScript>().canBeDamaged = true;
-            // gameObject.GetComponent<TestScript>().trigger.enabled = true;
-        }
 
-        if(gameObject.name == "Player")
-        {
+        if(gameObject.GetComponent<PlayerController>() == true)
             gameObject.GetComponent<PlayerController>().isMoving = false;
-            gameObject.GetComponent<PlayerController>().canBeDamaged = true;
-        }
 
-        // isMoving = false;            
+        yield return new WaitForSeconds(1f);
+        
+        if(gameObject.GetComponent<TestScript>() == true)
+            gameObject.GetComponent<TestScript>().canMove = true;
+
+        if(gameObject.GetComponent<PlayerController>() == true)
+            gameObject.GetComponent<PlayerController>().canMove = true;
+          
         yield return null;
     }
 
@@ -120,12 +121,6 @@ public class PlayerImpact : MonoBehaviour
     {
         newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * -vDirection);
 
-        // if(newPosition.z > 3.5f * zValue)
-        //     newPosition.z = 3.5f * zValue;
-
-        // if(newPosition.z < -3.5f * zValue)
-        //     newPosition.z = -3.5f * zValue;
-
         while(transform.position != newPosition)
         {
             float step = 7f * Time.deltaTime;
@@ -136,16 +131,16 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.name == "TestOpponent")
         {
             gameObject.GetComponent<TestScript>().isMoving = false;
-            gameObject.GetComponent<TestScript>().canBeDamaged = true;
+            // gameObject.GetComponent<TestScript>().canMove = true;
         }
 
         if(gameObject.name == "Player")
         {
             gameObject.GetComponent<PlayerController>().isMoving = false;
-            gameObject.GetComponent<PlayerController>().canBeDamaged = true;
+            // gameObject.GetComponent<PlayerController>().canMove = true;
         }
 
-        // isMoving = false;
+        yield return new WaitForSeconds(1f);
         yield return null;
     }
 
@@ -153,12 +148,6 @@ public class PlayerImpact : MonoBehaviour
     {
         newPosition = new Vector3(oldPosition.x + 3.5f * -hDirection , oldPosition.y, oldPosition.z);
 
-        // if(newPosition.x > 3.5f * xValue)
-        //     newPosition.x = 3.5f * xValue;
-
-        // if(newPosition.x < -3.5f * xValue)
-        //     newPosition.x = -3.5f * xValue;
-
         while(transform.position != newPosition)
         {
             float step = 7f * Time.deltaTime;
@@ -167,32 +156,25 @@ public class PlayerImpact : MonoBehaviour
         }
 
         if(gameObject.name == "TestOpponent")
-        {
             gameObject.GetComponent<TestScript>().isMoving = false;
-            gameObject.GetComponent<TestScript>().canBeDamaged = true;
-        }
 
         if(gameObject.name == "Player")
-        {
             gameObject.GetComponent<PlayerController>().isMoving = false;
-            gameObject.GetComponent<PlayerController>().canBeDamaged = true;
-        }
+        
+        yield return new WaitForSeconds(1f);
 
-        // isMoving = false;
+        if(gameObject.name == "TestOpponent")
+            // gameObject.GetComponent<TestScript>().canMove = true;
+
+        if(gameObject.name == "Player")
+            // gameObject.GetComponent<PlayerController>().canMove = true;
+
         yield return null;
     }
 
     IEnumerator VerticalLoss()
     {
-        // newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * -vDirection);
-
         newPosition = new Vector3(oldPosition.x, oldPosition.y, oldPosition.z + 3.5f * -vDirection);
-
-        // if(newPosition.z > 3.5f * zValue)
-        //     newPosition.z = 3.5f * zValue;
-
-        // if(newPosition.z < -3.5f * zValue)
-        //     newPosition.z = -3.5f * zValue;
 
         while(transform.position != newPosition)
         {
@@ -204,16 +186,16 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.name == "TestOpponent")
         {
             gameObject.GetComponent<TestScript>().isMoving = false;
-            gameObject.GetComponent<TestScript>().canBeDamaged = true;
+            // gameObject.GetComponent<TestScript>().canMove = true;
         }
 
         if(gameObject.name == "Player")
         {
             gameObject.GetComponent<PlayerController>().isMoving = false;
-            gameObject.GetComponent<PlayerController>().canBeDamaged = true;
+            // gameObject.GetComponent<PlayerController>().canBeDamaged = true;
         }
 
-        // isMoving = false;
+        yield return new WaitForSeconds(1f);
         yield return null;
     }
 }

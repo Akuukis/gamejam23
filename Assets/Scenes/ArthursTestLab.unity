@@ -511,7 +511,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4b7626d9a7a3ed641af2362fad3f0e09, type: 2}
+  - {fileID: 2100000, guid: 5b2d5f5a831d6964da9e688ccdc12b69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -553,9 +553,9 @@ GameObject:
   - component: {fileID: 1502080729}
   - component: {fileID: 1502080728}
   - component: {fileID: 1502080727}
-  - component: {fileID: 1502080731}
   - component: {fileID: 1502080732}
   - component: {fileID: 1502080733}
+  - component: {fileID: 1502080731}
   - component: {fileID: 1502080734}
   m_Layer: 0
   m_Name: Player
@@ -597,7 +597,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4b7626d9a7a3ed641af2362fad3f0e09, type: 2}
+  - {fileID: 2100000, guid: 5b2d5f5a831d6964da9e688ccdc12b69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -661,9 +661,10 @@ MonoBehaviour:
   isAccelerating: 0
   isMoving: 0
   isGrinding: 0
+  canMove: 1
+  turret: {fileID: 0}
   col: {fileID: 1502080727}
   trigger: {fileID: 1502080732}
-  canBeDamaged: 1
   oldPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &1502080732
 BoxCollider:
@@ -693,7 +694,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &1502080734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -908,7 +909,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &1765736648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -948,14 +949,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  xValue: 1
+  xValue: 2
   zValue: 1
   isAccelerating: 0
   isMoving: 0
   isGrinding: 0
+  canMove: 1
+  turret: {fileID: 0}
   col: {fileID: 1765736643}
   trigger: {fileID: 1765736648}
-  canBeDamaged: 1
   oldPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1978589391
 GameObject:
