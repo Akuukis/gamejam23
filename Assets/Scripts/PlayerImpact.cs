@@ -26,6 +26,9 @@ public class PlayerImpact : MonoBehaviour
 
     public void GotHit()
     {
+        if(activeCorountine != null)
+            StopCoroutine(activeCorountine);
+
         if(gameObject.GetComponent<TestScript>() == true)
         {
             gameObject.GetComponent<TestScript>().canMove = false;
@@ -57,17 +60,14 @@ public class PlayerImpact : MonoBehaviour
 
     public void LooseThePosition()
     {
+        if(activeCorountine != null)
+            StopCoroutine(activeCorountine);
+
         if(gameObject.name == "TestOpponent")
-        {
-            Debug.Log("Test");
             oldPosition = gameObject.GetComponent<TestScript>().oldPosition;
-        }
 
         if(gameObject.name == "Player")
-        {
-            Debug.Log("Player");
             oldPosition = gameObject.GetComponent<PlayerController>().oldPosition;
-        }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -107,7 +107,7 @@ public class PlayerImpact : MonoBehaviour
             gameObject.GetComponent<PlayerController>().isMoving = false;
 
         yield return new WaitForSeconds(1f);
-        
+
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
 
@@ -128,19 +128,20 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        if(gameObject.name == "TestOpponent")
-        {
+        if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().isMoving = false;
-            // gameObject.GetComponent<TestScript>().canMove = true;
-        }
 
-        if(gameObject.name == "Player")
-        {
+        if(gameObject.GetComponent<PlayerController>() == true)
             gameObject.GetComponent<PlayerController>().isMoving = false;
-            // gameObject.GetComponent<PlayerController>().canMove = true;
-        }
 
         yield return new WaitForSeconds(1f);
+
+        if(gameObject.GetComponent<TestScript>() == true)
+            gameObject.GetComponent<TestScript>().canMove = true;
+
+        if(gameObject.GetComponent<PlayerController>() == true)
+            gameObject.GetComponent<PlayerController>().canMove = true;
+
         yield return null;
     }
 
@@ -163,11 +164,11 @@ public class PlayerImpact : MonoBehaviour
         
         yield return new WaitForSeconds(1f);
 
-        if(gameObject.name == "TestOpponent")
-            // gameObject.GetComponent<TestScript>().canMove = true;
+        if(gameObject.GetComponent<TestScript>() == true)
+            gameObject.GetComponent<TestScript>().canMove = true;
 
-        if(gameObject.name == "Player")
-            // gameObject.GetComponent<PlayerController>().canMove = true;
+        if(gameObject.GetComponent<PlayerController>() == true)
+            gameObject.GetComponent<PlayerController>().canMove = true;
 
         yield return null;
     }
@@ -183,19 +184,14 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        if(gameObject.name == "TestOpponent")
-        {
-            gameObject.GetComponent<TestScript>().isMoving = false;
-            // gameObject.GetComponent<TestScript>().canMove = true;
-        }
-
-        if(gameObject.name == "Player")
-        {
-            gameObject.GetComponent<PlayerController>().isMoving = false;
-            // gameObject.GetComponent<PlayerController>().canBeDamaged = true;
-        }
-
         yield return new WaitForSeconds(1f);
+        
+        if(gameObject.GetComponent<TestScript>() == true)
+            gameObject.GetComponent<TestScript>().canMove = true;
+
+        if(gameObject.GetComponent<PlayerController>() == true)
+            gameObject.GetComponent<PlayerController>().canMove = true;
+
         yield return null;
     }
 }

@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 oldPosition;
     private Vector3 newPosition;
 
-    private IEnumerator activeCorountine;
+    public IEnumerator activeCorountine;
+    private GameObject playerInContact;
 
     void Update()
     {
@@ -35,10 +36,12 @@ public class PlayerController : MonoBehaviour
             isAccelerating = true;
             if(isMoving == false && canMove == true)
             {
+                trigger.enabled = true;
                 isMoving = true;
                 canMove = false;
                 vDirection = Input.GetAxisRaw("Vertical");
 
+                oldPosition = transform.position;
                 activeCorountine = GoVerticaly();
                 StartCoroutine(activeCorountine);
             }
@@ -49,10 +52,12 @@ public class PlayerController : MonoBehaviour
             isAccelerating = true;
             if(isMoving == false && canMove == true)
             {
+                trigger.enabled = true;
                 isMoving = true;
                 canMove = false;
                 hDirection = Input.GetAxisRaw("Horizontal");
 
+                oldPosition = transform.position;
                 activeCorountine = GoHorizontaly();
                 StartCoroutine(activeCorountine);
             }
@@ -62,11 +67,6 @@ public class PlayerController : MonoBehaviour
         {
             isAccelerating = false;
         }
-
-        if(isMoving)
-            trigger.enabled = true;
-        else
-            trigger.enabled = false;
 
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 11f;
@@ -78,11 +78,20 @@ public class PlayerController : MonoBehaviour
 
         if(isGrinding)
         {
+            if(playerInContact.GetComponent<TestScript>().isGrinding == false)
+            {
+                isGrinding = false;
+                activeCorountine = FinishMoving();
+                StartCoroutine(activeCorountine);
+                
+                Debug.Log(this + " Won");
+            }
+
             if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
             {
                 isGrinding = false;
-                // activeCorountine = MoveBackToOldPosition();
-                // StartCoroutine(activeCorountine);
+                Debug.Log(this + " Gave up");
+                GetComponent<PlayerImpact>().LooseThePosition();
             }
         }
     }
@@ -91,54 +100,42 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            canMove = false;
+            playerInContact = other.gameObject;
             trigger.enabled = false;
+            canMove = false;
 
-            if(other.GetComponent<TestScript>().isMoving == false && isGrinding == false)
+            if(activeCorountine != null)
+                StopCoroutine(activeCorountine);
+
+            if(isMoving == true && other.GetComponent<TestScript>().isMoving == false && isGrinding == false)
             {
                 Debug.Log(other + " was hit away!");
                 other.GetComponent<PlayerImpact>().GotHit();
+
+                activeCorountine = FinishMoving();
+                StartCoroutine(activeCorountine);
             }
-            else if(other.GetComponent<TestScript>().isMoving == true)
+            else if(isMoving == true && other.GetComponent<TestScript>().isMoving == true)
             {
                 if(isAccelerating == false && other.GetComponent<TestScript>().isAccelerating == false)
                 {
                     Debug.Log(this + " had a bounce!");
-                    StopCoroutine(activeCorountine);
+
                     activeCorountine = MoveBackToOldPosition();
                     StartCoroutine(activeCorountine);
                 }
                 else if(isAccelerating == true && other.GetComponent<TestScript>().isAccelerating == true)
                 {
                     Debug.Log(this + " is fighting back!");
-                    StopCoroutine(activeCorountine);
+
                     isGrinding = true;
                 }
             }
         }
     }
 
-    void OnTriggerExit(Collider other)
-    {
-
-        // if(isGrinding == false && other.GetComponent<TestScript>().isGrinding == true)
-        // {
-        //     Debug.Log(this + " has lost!");
-        //     StopCoroutine(activeCorountine);
-        //     gameObject.GetComponent<PlayerImpact>().LooseThePosition();
-        // }
-        // else if(isGrinding == true && other.GetComponent<TestScript>().isGrinding == false)
-        // {
-        //     Debug.Log(this + " has won!");
-        //     StopCoroutine(activeCorountine);
-        //     activeCorountine = WinThePosition();
-        //     StartCoroutine(activeCorountine);
-        // }
-    }
-
     IEnumerator GoVerticaly()
     {
-        oldPosition = transform.position;
         newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * vDirection);
 
         if(newPosition.z > 3.5f * zValue)
@@ -155,14 +152,14 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
+        trigger.enabled = false;
         yield return new WaitForSeconds(1f);
-        // canMove = true;
+        canMove = true;
         yield return null;
     }
 
     IEnumerator GoHorizontaly()
     {
-        oldPosition = transform.position;
         newPosition = new Vector3(transform.position.x + 3.5f * hDirection, transform.position.y, transform.position.z);
 
         if(newPosition.x > 3.5f * xValue)
@@ -179,6 +176,7 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
+        trigger.enabled = false;
         yield return new WaitForSeconds(1f);
         canMove = true;
         yield return null;
@@ -195,12 +193,13 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
+        trigger.enabled = false;
         yield return new WaitForSeconds(1f);
-        // canMove = true;
+        canMove = true;
         yield return null;
     }
 
-    IEnumerator WinThePosition()
+    IEnumerator FinishMoving()
     {
         Debug.Log(newPosition);
         while(transform.position != newPosition)
@@ -211,7 +210,9 @@ public class PlayerController : MonoBehaviour
         }
 
         isMoving = false;
-        // canBeDamaged = true;
+        trigger.enabled = false;
+        yield return new WaitForSeconds(1f);
+        canMove = true;
         yield return null;
     }
 }

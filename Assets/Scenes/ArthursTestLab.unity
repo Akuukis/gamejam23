@@ -662,7 +662,7 @@ MonoBehaviour:
   isMoving: 0
   isGrinding: 0
   canMove: 1
-  turret: {fileID: 0}
+  turret: {fileID: 1978589392}
   col: {fileID: 1502080727}
   trigger: {fileID: 1502080732}
   oldPosition: {x: 0, y: 0, z: 0}
@@ -955,7 +955,7 @@ MonoBehaviour:
   isMoving: 0
   isGrinding: 0
   canMove: 1
-  turret: {fileID: 0}
+  turret: {fileID: 362196445}
   col: {fileID: 1765736643}
   trigger: {fileID: 1765736648}
   oldPosition: {x: 0, y: 0, z: 0}

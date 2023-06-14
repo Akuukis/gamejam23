@@ -27,6 +27,7 @@ public class TestScript : MonoBehaviour
     private Vector3 newPosition;
 
     private IEnumerator activeCorountine;
+    private GameObject playerInContact;
 
     void Update()
     {
@@ -35,10 +36,11 @@ public class TestScript : MonoBehaviour
             isAccelerating = true;
             if(isMoving == false && canMove == true)
             {
+                trigger.enabled = true;
                 isMoving = true;
                 canMove = false;
 
-                activeCorountine = GoHorizontaly(-1f);
+                activeCorountine = GoVerticaly(-1f);
                 StartCoroutine(activeCorountine);
             }
         }
@@ -48,10 +50,11 @@ public class TestScript : MonoBehaviour
             isAccelerating = true;
             if(isMoving == false && canMove == true)
             {
+                trigger.enabled = true;
                 isMoving = true;
                 canMove = false;
 
-                activeCorountine = GoHorizontaly(1f);
+                activeCorountine = GoVerticaly(1f);
                 StartCoroutine(activeCorountine);
             }
         }
@@ -60,11 +63,6 @@ public class TestScript : MonoBehaviour
         {
             isAccelerating = false;
         }
-        
-        if(isMoving)
-            trigger.enabled = true;
-        else
-            trigger.enabled = false;
         
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 11f;
@@ -76,11 +74,20 @@ public class TestScript : MonoBehaviour
 
         if(isGrinding)
         {
+            if(playerInContact.GetComponent<PlayerController>().isGrinding == false)
+            {
+                isGrinding = false;
+                activeCorountine = FinishMoving();
+                StartCoroutine(activeCorountine);
+                
+                Debug.Log(this + " Won");
+            }
+
             if(Input.GetKey(KeyCode.O) == false && Input.GetKey(KeyCode.P) == false)
             {
                 isGrinding = false;
-                // activeCorountine = MoveBackToOldPosition();
-                // StartCoroutine(activeCorountine);
+                Debug.Log(this + " Gave up");
+                GetComponent<PlayerImpact>().LooseThePosition();
             }
         }
     }
@@ -89,27 +96,35 @@ public class TestScript : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            canMove = false;
             trigger.enabled = false;
+            canMove = false;
 
-            if(other.GetComponent<PlayerController>().isMoving == false && isGrinding == false)
+            playerInContact = other.gameObject;
+
+            if(activeCorountine != null)
+                StopCoroutine(activeCorountine);
+
+            if(isMoving == true && other.GetComponent<PlayerController>().isMoving == false && isGrinding == false)
             {
                 Debug.Log(other + " was hit away!");
                 other.GetComponent<PlayerImpact>().GotHit();
+
+                activeCorountine = FinishMoving();
+                StartCoroutine(activeCorountine);
             }
-            else if(other.GetComponent<PlayerController>().isMoving == true)
+            else if(isMoving == true && other.GetComponent<PlayerController>().isMoving == true)
             {
                 if(isAccelerating == false && other.GetComponent<PlayerController>().isAccelerating == false)
                 {
                     Debug.Log(this + " had a bounce!");
-                    StopCoroutine(activeCorountine);
+
                     activeCorountine = MoveBackToOldPosition();
                     StartCoroutine(activeCorountine);
                 }
                 else if(isAccelerating == true && other.GetComponent<PlayerController>().isAccelerating == true)
                 {
                     Debug.Log(this + " is fighting back!");
-                    StopCoroutine(activeCorountine);
+
                     isGrinding = true;
                 }
             }
@@ -133,10 +148,10 @@ public class TestScript : MonoBehaviour
         // }
     }
 
-    IEnumerator GoVerticaly()
+    IEnumerator GoVerticaly(float xd)
     {
         oldPosition = transform.position;
-        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * vDirection);
+        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * xd);
 
         if(newPosition.z > 3.5f * zValue)
             newPosition.z = 3.5f * zValue;
@@ -152,8 +167,9 @@ public class TestScript : MonoBehaviour
         }
 
         isMoving = false;
+        trigger.enabled = false;
         yield return new WaitForSeconds(1f);
-        // canMove = true;
+        canMove = true;
         yield return null;
     }
 
@@ -176,8 +192,9 @@ public class TestScript : MonoBehaviour
         }
 
         isMoving = false;
+        trigger.enabled = false;
         yield return new WaitForSeconds(1f);
-        // canMove = true;
+        canMove = true;
         yield return null;
     }
 
@@ -191,12 +208,13 @@ public class TestScript : MonoBehaviour
         }
 
         isMoving = false;
+        trigger.enabled = false;
         yield return new WaitForSeconds(1f);
-        // canMove = true;
+        canMove = true;
         yield return null;
     }
 
-    IEnumerator WinThePosition()
+    IEnumerator FinishMoving()
     {
         while(transform.position != newPosition)
         {
@@ -206,7 +224,9 @@ public class TestScript : MonoBehaviour
         }
 
         isMoving = false;
-        // canMove = true;
+        trigger.enabled = false;
+        yield return new WaitForSeconds(1f);
+        canMove = true;
         yield return null;
     }
 }
