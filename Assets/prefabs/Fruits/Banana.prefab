@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3321147717240215408}
+  - component: {fileID: 2487348302951516569}
+  - component: {fileID: 7051419650668028273}
+  - component: {fileID: 1672610329662885941}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -32,6 +35,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2487348302951516569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638870126742466417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactDamage: 1
+--- !u!65 &7051419650668028273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638870126742466417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37, y: 0.39, z: 0.83}
+  m_Center: {x: 0, y: 0.15, z: -0.06}
+--- !u!54 &1672610329662885941
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638870126742466417}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &4853785201260786304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,24 +166,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e7cee3d6a645f4595d0bf5988d1cfd, type: 3}
---- !u!1 &3607587661383743240 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 92e7cee3d6a645f4595d0bf5988d1cfd, type: 3}
-  m_PrefabInstance: {fileID: 4853785201260786304}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &4632194059693648107
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3607587661383743240}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.292246, y: 2.075828, z: 4.1834917}
-  m_Center: {x: -0.024047017, y: 0.83927, z: -0.31103098}
 --- !u!4 &4960330787268269419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 92e7cee3d6a645f4595d0bf5988d1cfd, type: 3}

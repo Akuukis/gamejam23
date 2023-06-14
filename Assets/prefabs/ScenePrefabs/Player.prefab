@@ -120,11 +120,13 @@ MonoBehaviour:
   movementSpeed: 5
   xValue: 2
   zValue: 1
+  isAccelerating: 0
   isMoving: 0
   isGrinding: 0
   col: {fileID: 2881418111368829760}
   trigger: {fileID: 2881418111368829771}
-  canMove: 1
+  canBeDamaged: 1
+  oldPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &2881418111368829771
 BoxCollider:
   m_ObjectHideFlags: 0

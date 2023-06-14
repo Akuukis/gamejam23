@@ -113,7 +113,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaf55b43a4633044d881154630909951, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToThrow: {fileID: 0}
+  objectsToThrow:
+  - {fileID: 4337602974624761038, guid: c4c734202e7ebdf4f8810b24d16c35f4, type: 3}
+  - {fileID: 9049294228282125036, guid: cd80404345ae88345944102226158792, type: 3}
+  - {fileID: 7170234202332140105, guid: db7d0aba5c34f2343a8c592f0981b9d8, type: 3}
+  - {fileID: 6326980865648350708, guid: d71641f1002c64f458be83cdb3523f80, type: 3}
+  - {fileID: 2104571804856075202, guid: 9dcefe61618130742a29155cfeb383f2, type: 3}
+  - {fileID: 8060289410557579462, guid: 6a12e36bb49252e4bba756f466599892, type: 3}
+  - {fileID: 6521796563323039226, guid: 8a9a44186c1e55e49bf35df92b103341, type: 3}
+  - {fileID: 8638870126742466417, guid: 8b84e1edf20c23a429e9693514ffa2b9, type: 3}
+  - {fileID: 6462405464594050205, guid: 46432a0e37e864f4e943947e4507e3d7, type: 3}
+  - {fileID: 5825769053937159072, guid: 7998f96c9a199ca438be8c694e32be1e, type: 3}
+  - {fileID: 7376599777269995881, guid: 30653cdd741c8e743b5662833db4942a, type: 3}
   throwAngle: 45
   throwForce: 10
   impactDamage: 10

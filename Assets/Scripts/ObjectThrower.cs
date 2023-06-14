@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class ObjectThrower : MonoBehaviour
 {
-    public GameObject objectToThrow;
-    public float throwAngle = 45f;
+ public List<GameObject> objectsToThrow;
+ 
+	public float throwAngle = 45f;
     public float throwForce = 10f;
     public float impactDamage = 10f;
+    public float maxRotationSpeed = 5f;
 
     public void ThrowObject()
     {
-		Debug.Log("This is the first log.");
-		
-        // Instantiate the object to throw
+        if (objectsToThrow.Count == 0)
+        {
+            Debug.LogWarning("No objects to throw!");
+            return;
+        }
+
+        // Select a random object from the list
+        int randomIndex = Random.Range(0, objectsToThrow.Count);
+        GameObject objectToThrow = objectsToThrow[randomIndex];
+
+        // Instantiate the selected object to throw
         GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
+
+        // Apply a random rotation spin to the thrown object
+        Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
+        Vector3 randomRotation = Random.insideUnitSphere * maxRotationSpeed;
+        rb.angularVelocity = randomRotation;
 
         // Calculate the initial velocity for the arc trajectory
         float throwVelocity = throwForce / Mathf.Sin(2f * throwAngle * Mathf.Deg2Rad);
@@ -22,13 +37,10 @@ public class ObjectThrower : MonoBehaviour
         Vector3 initialVelocity = throwDirection.normalized * throwVelocity;
 
         // Apply the calculated velocity to the thrown object's Rigidbody component
-        Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
         rb.velocity = initialVelocity;
 
         // Add a script to the thrown object to apply damage upon impact
         ObjectDamage objectDamage = thrownObject.AddComponent<ObjectDamage>();
         objectDamage.impactDamage = impactDamage;
-		
-		Debug.Log("This is after what ever.");
     }
 }
