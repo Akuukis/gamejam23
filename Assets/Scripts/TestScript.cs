@@ -33,6 +33,9 @@ public class TestScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.O) == true)
         {
+
+
+
             isAccelerating = true;
             if(isMoving == false && canMove == true)
             {
@@ -98,7 +101,7 @@ public class TestScript : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            trigger.enabled = false;
+            // trigger.enabled = false;
             canMove = false;
 
             playerInContact = other.gameObject;

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isMoving = false;
     public bool isGrinding = false;
     public bool canMove = true;
+    public bool isReturning = false;
     
     public Transform turret;
     public Collider col;
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
         if(other.tag == "Player")
         {
             playerInContact = other.gameObject;
-            trigger.enabled = false;
+            // trigger.enabled = false;
             canMove = false;
 
             if(activeCorountine != null)
@@ -112,8 +113,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(other + " was hit away!");
                 other.GetComponent<PlayerImpact>().GotHit();
 
-                activeCorountine = FinishMoving();
-                StartCoroutine(activeCorountine);
+                if(isReturning == false)
+                {
+                    activeCorountine = FinishMoving();
+                    StartCoroutine(activeCorountine);
+                }
             }
             else if(isMoving == true && other.GetComponent<TestScript>().isMoving == true)
             {

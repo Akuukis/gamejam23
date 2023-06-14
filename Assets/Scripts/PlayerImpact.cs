@@ -18,6 +18,8 @@ public class PlayerImpact : MonoBehaviour
     [HideInInspector]
     public IEnumerator activeCorountine;
 
+    private GameObject theOne;
+
     void Update()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -32,10 +34,14 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.GetComponent<TestScript>() == true)
         {
             gameObject.GetComponent<TestScript>().canMove = false;
+            xValue = gameObject.GetComponent<TestScript>().xValue;
+            zValue = gameObject.GetComponent<TestScript>().zValue;
         }
         else if(gameObject.GetComponent<PlayerController>() == true)
         {
             gameObject.GetComponent<PlayerController>().canMove = false;
+            xValue = gameObject.GetComponent<PlayerController>().xValue;
+            zValue = gameObject.GetComponent<PlayerController>().zValue;
         }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -47,8 +53,16 @@ public class PlayerImpact : MonoBehaviour
 
         if(hDirection == 1f || hDirection == -1f)
         {
-            activeCorountine = HorizontalImpact();
-            StartCoroutine(activeCorountine);
+            if(gameObject.GetComponent<TestScript>() == true)
+            {
+                activeCorountine = HorizontalImpact();
+                StartCoroutine(activeCorountine);
+            }
+            else if(gameObject.GetComponent<PlayerController>() == true)
+            {
+                activeCorountine = PlayerHorizontalImpact();
+                StartCoroutine(activeCorountine);
+            }
         }
 
         if(vDirection == 1f || vDirection == -1f)
@@ -93,11 +107,28 @@ public class PlayerImpact : MonoBehaviour
     {
         newPosition = new Vector3(transform.position.x + 3.5f * -hDirection, transform.position.y, transform.position.z);
 
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
         if(newPosition.x > 3.5f * xValue)
+        {
             newPosition.x = 3.5f * xValue;
 
+            gameObject.GetComponent<TestScript>().trigger.enabled = true;
+            gameObject.GetComponent<TestScript>().isMoving = true;
+        }
+
         if(newPosition.x < -3.5f * xValue)
+        {
             newPosition.x = -3.5f * xValue;
+
+            gameObject.GetComponent<TestScript>().trigger.enabled = true;
+            gameObject.GetComponent<TestScript>().isMoving = true;
+        }
 
         while(transform.position != newPosition)
         {
@@ -106,26 +137,107 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        if(gameObject.GetComponent<TestScript>() == true)
-            gameObject.GetComponent<TestScript>().isMoving = false;
-
-        if(gameObject.GetComponent<PlayerController>() == true)
-            gameObject.GetComponent<PlayerController>().isMoving = false;
+        gameObject.GetComponent<TestScript>().isMoving = false;
+        gameObject.GetComponent<TestScript>().trigger.enabled = false;
 
         yield return new WaitForSeconds(0.5f);
 
-        if(gameObject.GetComponent<TestScript>() == true)
-            gameObject.GetComponent<TestScript>().canMove = true;
+        gameObject.GetComponent<TestScript>().canMove = true;
+        
+        yield return null;
+    }
 
-        if(gameObject.GetComponent<PlayerController>() == true)
-            gameObject.GetComponent<PlayerController>().canMove = true;
-          
+    IEnumerator PlayerHorizontalImpact()
+    {
+        newPosition = new Vector3(transform.position.x + 3.5f * -hDirection, transform.position.y, transform.position.z);
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        if(newPosition.x > 3.5f * xValue)
+        {
+            newPosition.x = 3.5f * xValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        if(newPosition.x < -3.5f * xValue)
+        {
+            newPosition.x = -3.5f * xValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        gameObject.GetComponent<PlayerController>().isMoving = false;
+        gameObject.GetComponent<PlayerController>().trigger.enabled = false;
+        gameObject.GetComponent<PlayerController>().isReturning = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.GetComponent<PlayerController>().canMove = true;
+
         yield return null;
     }
 
     IEnumerator VerticalImpact()
     {
         newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * -vDirection);
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        if(newPosition.z > 3.5f * zValue)
+        {
+            newPosition.z = 3.5f * zValue;
+
+            if(gameObject.GetComponent<TestScript>() == true)
+            {
+                gameObject.GetComponent<TestScript>().trigger.enabled = true;
+                gameObject.GetComponent<TestScript>().isMoving = true;
+            }
+
+            if(gameObject.GetComponent<PlayerController>() == true)
+            {
+                gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+                gameObject.GetComponent<PlayerController>().isMoving = true;
+            }
+        }
+
+        if(newPosition.z < -3.5f * zValue)
+        {
+            newPosition.z = -3.5f * zValue;
+
+            if(gameObject.GetComponent<TestScript>() == true)
+            {
+                gameObject.GetComponent<TestScript>().trigger.enabled = true;
+                gameObject.GetComponent<TestScript>().isMoving = true;
+            }
+
+            if(gameObject.GetComponent<PlayerController>() == true)
+            {
+                gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+                gameObject.GetComponent<PlayerController>().isMoving = true;
+            }
+        }
 
         while(transform.position != newPosition)
         {

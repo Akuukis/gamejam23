@@ -662,6 +662,7 @@ MonoBehaviour:
   isMoving: 0
   isGrinding: 0
   canMove: 1
+  isReturning: 0
   turret: {fileID: 1978589392}
   col: {fileID: 1502080727}
   trigger: {fileID: 1502080732}
@@ -702,7 +703,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502080726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b37cb523161efe04f8398b0f12f7903e, type: 3}
   m_Name: 
