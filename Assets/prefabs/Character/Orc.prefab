@@ -238,3 +238,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectThrower: {fileID: 7555032226694422644}
+--- !u!114 &7003996249403033900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9053392424604716485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6cd6783f9d1c84281f028c9ef8138e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectThrower: {fileID: 7555032226694422644}
+  animator: {fileID: 3652968812985792685}

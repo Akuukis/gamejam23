@@ -4,24 +4,32 @@ using UnityEngine;
 
 public class ObjectThrower : MonoBehaviour
 {
- public List<GameObject> objectsToThrow;
- 
-	public float throwAngle = 45f;
+    public List<GameObject> objectsToThrow;
+
+    public float throwAngle = 45f;
     public float throwForce = 10f;
     public float impactDamage = 10f;
     public float maxRotationSpeed = 5f;
 
-    public void ThrowObject()
+    public GameObject GetRandomObjectToThrow()
     {
         if (objectsToThrow.Count == 0)
         {
             Debug.LogWarning("No objects to throw!");
-            return;
+            return null;
         }
 
-        // Select a random object from the list
         int randomIndex = Random.Range(0, objectsToThrow.Count);
-        GameObject objectToThrow = objectsToThrow[randomIndex];
+        return objectsToThrow[randomIndex];
+    }
+
+    public void ThrowObject()
+    {
+        GameObject objectToThrow = GetRandomObjectToThrow();
+        if (objectToThrow == null)
+        {
+            return;
+        }
 
         // Instantiate the selected object to throw
         GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
