@@ -1,0 +1,14 @@
+# Blender 3.5.1 MTL File: 'Truck_and_assets_v006.blend'
+# www.blender.org
+
+newmtl Truck
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd /Users/eventopland/Dropbox (Personal)/Current projects/Current projects/Castle Game Jam 2023/GEO/Truck v001/TEX/truck_v001/256px/truck_color.png
+map_Ns /Users/eventopland/Dropbox (Personal)/Current projects/Current projects/Castle Game Jam 2023/GEO/Truck v001/TEX/truck_v001/256px/truck_rgh.png
+map_refl /Users/eventopland/Dropbox (Personal)/Current projects/Current projects/Castle Game Jam 2023/GEO/Truck v001/TEX/truck_v001/256px/truck_metlalic.png
+map_Bump -bm 1.000000 /Users/eventopland/Dropbox (Personal)/Current projects/Current projects/Castle Game Jam 2023/GEO/Truck v001/TEX/truck_v001/256px/truck_normal.png

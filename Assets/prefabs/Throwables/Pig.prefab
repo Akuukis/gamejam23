@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactDamage: 10
+  impactParticlePrefab: {fileID: 1743637094903878, guid: 021a2f7a2c5bc4449b4c64a66a050e8c, type: 3}
 --- !u!135 &9105158869214772854
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -59,8 +60,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.94
-  m_Center: {x: 0.35157394, y: 2.28, z: 0.073104024}
+  m_Radius: 0.83
+  m_Center: {x: 0.04, y: 0.71, z: 0}
 --- !u!54 &3818065574058197202
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90,23 +91,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27b9140f7b0c9ef4b815345fb4f10b19, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.33
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27b9140f7b0c9ef4b815345fb4f10b19, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.33
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27b9140f7b0c9ef4b815345fb4f10b19, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.33
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27b9140f7b0c9ef4b815345fb4f10b19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27b9140f7b0c9ef4b815345fb4f10b19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.42
+      value: 0.697
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 27b9140f7b0c9ef4b815345fb4f10b19, type: 3}
       propertyPath: m_LocalPosition.z

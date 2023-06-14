@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactDamage: 10
+  impactParticlePrefab: {fileID: 1348631928614724, guid: 250e86a7819757142b6510e936ec4abf, type: 3}
 --- !u!65 &7415227034523108607
 BoxCollider:
   m_ObjectHideFlags: 0

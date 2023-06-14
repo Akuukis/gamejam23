@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6326980865648350711}
-  - component: {fileID: 2564894170154531353}
+  - component: {fileID: 6303772871561848860}
   - component: {fileID: 3340356231209987363}
   - component: {fileID: 7484668749747567965}
   m_Layer: 0
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2564894170154531353
+--- !u!114 &6303772871561848860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,9 +44,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6326980865648350708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8c195c9429cfb4b9f5aaec1c8fce5f, type: 3}
+  m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactDamage: 3
+  impactParticlePrefab: {fileID: 1905575953860520, guid: f73afd53ee73a4040bf224699b896846, type: 3}
 --- !u!136 &3340356231209987363
 CapsuleCollider:
   m_ObjectHideFlags: 0

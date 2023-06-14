@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactDamage: 1
+  impactParticlePrefab: {fileID: 1875262113099396, guid: bc1e15d192759d849ab64a8ef7a1a2d8, type: 3}
 --- !u!135 &6324569389534620521
 SphereCollider:
   m_ObjectHideFlags: 0

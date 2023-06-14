@@ -5,18 +5,26 @@ using UnityEngine;
 public class ObjectDamage : MonoBehaviour
 {
     public float impactDamage = 10f;
+    public GameObject impactParticlePrefab;
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the collision is with a GameObject that can take damage
-        IDamageable damageable = collision.collider.GetComponent<IDamageable>();
+        // Apply damage to the object being collided with (if it implements IDamageable)
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            // Apply damage to the collided object
             damageable.TakeDamage(impactDamage);
         }
 
-        // Destroy the thrown object upon impact
-        Destroy(gameObject);
+		if (impactParticlePrefab == null)
+    {
+        Debug.LogWarning("No impact particle prefab assigned!");
+        return;
+    }
+
+        // Instantiate the impact particle effect at the collision point
+        GameObject impactParticle = Instantiate(impactParticlePrefab, transform.position, Quaternion.identity);
+        Destroy(impactParticle, 2f); // Optionally, destroy the particle effect after 2 seconds
+		Destroy(gameObject);
     }
 }
