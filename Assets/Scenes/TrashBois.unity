@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1373791032122836539, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191358569779505831, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1566550351}
     - target: {fileID: 3820877368477078963, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -182,6 +190,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 845166297}
+    - target: {fileID: 6202241158103505863, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
 --- !u!1001 &223828127
@@ -214,6 +226,10 @@ PrefabInstance:
     - target: {fileID: 834533158296987905, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60.22295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166030127973838813, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1171683702531923667, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -250,26 +266,6 @@ PrefabInstance:
     - target: {fileID: 1372242892923436299, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 6.128249
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484396223590842527, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.00075
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484396223590842527, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484396223590842527, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.652
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484396223590842527, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1484396223590842527, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1677560946566574630, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -631,6 +627,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.7806435
       objectReference: {fileID: 0}
+    - target: {fileID: 6137549684603171361, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7001938639539360779, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.98021
@@ -818,6 +818,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3820877368477078963, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
   m_PrefabInstance: {fileID: 111130077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1566550351 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8374430392546072603, guid: c6d7d6eb81d8ae841b9d2208cb5a9918, type: 3}
+  m_PrefabInstance: {fileID: 8374430393274405653}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1821445747 stripped
 GameObject:

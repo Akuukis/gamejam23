@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageableObject : MonoBehaviour, IDamageable
 {
     [SerializeField] private float maxHealth = 100f;  // Maximum health value that can be set up in the Inspector
 	[SerializeField] private GameObject deathParticleEffect;  // Particle effect prefab assigned in the Inspector
+	[SerializeField] private Slider healthSlider;  // Reference to the UI Slider component assigned in the Inspector
     private float currentHealth;
 	public GameObject impactParticlePrefab;
 	
 	private void Start()
     {
         currentHealth = maxHealth;
+		UpdateHealthBar();
     }
 	
 	public void TakeDamage(float amount)
@@ -33,6 +36,8 @@ public class DamageableObject : MonoBehaviour, IDamageable
         {
             Die();
         }
+		
+		UpdateHealthBar();
     }
 	
 	private void Die()
@@ -45,5 +50,15 @@ public class DamageableObject : MonoBehaviour, IDamageable
 
         // Handle the object's death
         Destroy(gameObject);
+		Destroy(healthSlider);
+    }
+	
+	private void UpdateHealthBar()
+    {
+        if (healthSlider != null)
+        {
+            float normalizedHealth = currentHealth / maxHealth;
+            healthSlider.value = normalizedHealth;
+        }
     }
 }
