@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestOpponent
       objectReference: {fileID: 0}
+    - target: {fileID: 3820877368477078964, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3820877368477078972, guid: 9e73cf85f1afd2b4ebe581e7aaaa779f, type: 3}
       propertyPath: player
       value: 
@@ -210,6 +214,10 @@ PrefabInstance:
     - target: {fileID: 2881418111368829761, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881418111368829761, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2881418111368829769, guid: 5d87e0f5ad91b6448ab8c6bbca76f8a2, type: 3}
       propertyPath: player

@@ -12,11 +12,13 @@ public class DamageableObject : MonoBehaviour, IDamageable
     private float currentHealth;
 	private float previousHealthPercentage = 1f;  // Variable to store the previous health percentage
 	public GameObject impactParticlePrefab;
+	CameraShaker cameraShaker;
 	
 	private void Start()
     {
         currentHealth = maxHealth;
 		UpdateHealthBar();
+		cameraShaker = FindObjectOfType<CameraShaker>();
     }
 	
 	public void TakeDamage(float amount)
@@ -79,6 +81,12 @@ public class DamageableObject : MonoBehaviour, IDamageable
 				{
 					// Activate particle effect slot and all its children
 					SetParticleSystemsPlayingState(particleSystem, true);
+					
+					bool isHighDamage = false; // Determine if it's a high damage situation or not
+
+					// Shake the camera with the appropriate shake settings
+					cameraShaker.ShakeCamera(isHighDamage);
+					
 				}
 				else if (previousHealthPercentage > (float)(i + 1) / particleEffectSlots.Length)
 				{

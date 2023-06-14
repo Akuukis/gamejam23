@@ -145,6 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477490382329780618}
   - component: {fileID: 1008204718694795719}
+  - component: {fileID: 3305108}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -206,6 +207,27 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 738429350430555685}
+--- !u!114 &3305108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3690142212667146030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289ada19e88ed1e42ad8e66ec8d0902e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 1008204718694795719}
+  defaultShakeSettings:
+    shakeDuration: 0.5
+    shakeAmplitude: 0.3
+    shakeFrequency: 1.5
+  highDamageShakeSettings:
+    shakeDuration: 0.7
+    shakeAmplitude: 1.8
+    shakeFrequency: 3
 --- !u!1 &4970110444448297143
 GameObject:
   m_ObjectHideFlags: 0
