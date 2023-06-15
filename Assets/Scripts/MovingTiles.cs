@@ -19,7 +19,7 @@ public class MovingTiles : MonoBehaviour
             child.gameObject.SetActive(false);
         }
 
-        tileSize = tiles[tile1].GetComponent<Renderer>().bounds.size.z;
+        tileSize = tiles[tile1].GetComponent<Renderer>().localBounds.size.z;
         z = tiles[tile1].position.z - tileSize;
     }
 
