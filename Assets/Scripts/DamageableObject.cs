@@ -67,6 +67,18 @@ public class DamageableObject : MonoBehaviour, IDamageable
         }
     }
 	
+	public void Heal(float amount)
+	{
+		currentHealth += amount;
+		
+		// Ensure that the currentHealth does not exceed the maximum health
+		currentHealth = Mathf.Min(currentHealth, maxHealth);
+		
+		UpdateHealthBar();
+		UpdateParticleEffects();
+		
+	}
+	
 	private void UpdateParticleEffects()
 	{
 		if (particleEffectSlots.Length > 0)
@@ -77,7 +89,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
 			{
 				ParticleSystem particleSystem = particleEffectSlots[i];
 
-				if (healthPercentage <= (float)(i + 1) / particleEffectSlots.Length)
+				if (healthPercentage < (float)(i + 1) / particleEffectSlots.Length)
 				{
 					// Activate particle effect slot and all its children
 					SetParticleSystemsPlayingState(particleSystem, true);
@@ -85,10 +97,10 @@ public class DamageableObject : MonoBehaviour, IDamageable
 					bool isHighDamage = false; // Determine if it's a high damage situation or not
 
 					// Shake the camera with the appropriate shake settings
-					cameraShaker.ShakeCamera(isHighDamage);
+					cameraShaker.ShakeCamera(isHighDamage);		
 					
 				}
-				else if (previousHealthPercentage > (float)(i + 1) / particleEffectSlots.Length)
+				else if (previousHealthPercentage < (float)(i + 1) / particleEffectSlots.Length)
 				{
 					// Deactivate particle effect slot and all its children
 					SetParticleSystemsPlayingState(particleSystem, false);

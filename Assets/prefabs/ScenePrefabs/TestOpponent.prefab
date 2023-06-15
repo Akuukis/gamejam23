@@ -213,6 +213,7 @@ MonoBehaviour:
   movementSpeed: 5
   xValue: 1
   zValue: 1
+  impactDelay: 0.1
   isAccelerating: 0
   isMoving: 0
   isGrinding: 0
@@ -691,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699360234999442595, guid: 4277435416171f34f857ea6ba7d746ea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5004372127515748129, guid: 4277435416171f34f857ea6ba7d746ea, type: 3}
       propertyPath: m_Name
@@ -703,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951280356128551263, guid: 4277435416171f34f857ea6ba7d746ea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4277435416171f34f857ea6ba7d746ea, type: 3}
