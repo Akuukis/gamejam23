@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MoveableSpawner : MonoBehaviour
 {
+    public bool prespawn = false;
     public float moveSpeed = 12f;
     public float spawnStep = 10f;
     public float spawnMinDist = 10f;
@@ -11,7 +12,7 @@ public class MoveableSpawner : MonoBehaviour
     public float despawnAt = -10f;
     protected List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
     protected float distanceLastStep = 0;
-    protected float distanceLastSpawn = 0;
+    protected float distanceLastSpawn = -9999;
     protected float totalWeight = 0;
 
     protected void Start()
@@ -26,9 +27,12 @@ public class MoveableSpawner : MonoBehaviour
             spawnable.gameObject.SetActive(false);
         }
 
-        for(float i=0; i<=spawnAt; i=i+spawnStep)
+        if(prespawn)
         {
-            spawn(i);
+            for(float i=-spawnAt; i<=0; i=i+spawnStep)
+            {
+                spawn(i);
+            }
         }
     }
 
