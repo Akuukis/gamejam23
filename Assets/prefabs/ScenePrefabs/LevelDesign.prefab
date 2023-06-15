@@ -196,8 +196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
-  spawnEvery: 10
+  prespawn: 1
+  moveSpeed: 8
+  spawnStep: 10
+  spawnMinDist: 10
   spawnChance: 1
   spawnAt: 10
   despawnAt: -10
@@ -250,8 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
-  spawnEvery: 10
+  prespawn: 1
+  moveSpeed: 8
+  spawnStep: 10
+  spawnMinDist: 10
   spawnChance: 1
   spawnAt: 10
   despawnAt: -10
