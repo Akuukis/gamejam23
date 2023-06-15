@@ -8,17 +8,20 @@ public class MoveableSpawner : MonoBehaviour
     public float spawnChance = 1f;
     public float spawnAt = 10f;
     public float despawnAt = -10f;
-    protected float z;
-    protected List<GameObject> options = new List<GameObject>();
-    protected List<Moveable> instances = new List<Moveable>();
+    protected List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
     protected float distance = 0;
+    protected float totalWeight = 0;
 
     protected void Start()
     {
         foreach (Transform child in transform)
         {
-            options.Add(child.gameObject);
-            child.gameObject.SetActive(false);
+            MoveableSpawnable spawnable = child.GetComponent<MoveableSpawnable>();
+            if(spawnable == null) continue;
+
+            spawnables.Add(spawnable);
+            totalWeight += spawnable.spawnWeight;
+            spawnable.gameObject.SetActive(false);
         }
 
         //// Leave hardcoded value, because the formula below doesn't work on Collider.
@@ -43,14 +46,27 @@ public class MoveableSpawner : MonoBehaviour
     protected void spawn(float distance) {
         if(Random.value > spawnChance) return;
 
-        int index = (int)(Random.value * options.Count);
-        GameObject newGameObject = Instantiate(options[index], transform);
+        GameObject newGameObject = Instantiate(getWeightedRandomSpawnable().gameObject, transform);
         newGameObject.SetActive(true);
         Moveable moveable = newGameObject.AddComponent(typeof(Moveable)) as Moveable;
         moveable.distance = distance + spawnAt;
         moveable.moveSpeed = moveSpeed;
         moveable.despawnAt = despawnAt;
-        instances.Add(moveable);
+    }
+
+    public MoveableSpawnable getWeightedRandomSpawnable()
+    {
+        float randomValue = Random.Range(0f, totalWeight);
+
+        foreach (MoveableSpawnable spawnable in spawnables)
+        {
+            if (randomValue <= spawnable.spawnWeight) return spawnable;
+
+            randomValue -= spawnable.spawnWeight;
+        }
+
+        // This point should never be reached unless the list is empty
+        throw new System.Exception("Do not edit MoveableSpawnable spawnWeight during runtime.");
     }
 
 }

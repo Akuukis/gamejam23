@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 7201716211075302221}
   - component: {fileID: 6406657366435825792}
   - component: {fileID: 2451831764870255193}
+  - component: {fileID: 4395764552874519129}
   m_Layer: 0
   m_Name: Roaddirt03
   m_TagString: Untagged
@@ -136,6 +137,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4395764552874519129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548550662237440502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnWeight: 1
 --- !u!1 &1846375691742136721
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 706463026738879062}
+  - component: {fileID: 6261647416135949920}
   m_Layer: 0
   m_Name: Walls01Stone
   m_TagString: Untagged
@@ -502,6 +517,19 @@ Transform:
   m_Father: {fileID: 4717382511049971023}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6261647416135949920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3746902826308036680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnWeight: 1
 --- !u!1 &4109723516072658779
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,6 +539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1133437898472019176}
+  - component: {fileID: 7520541179440597303}
   m_Layer: 0
   m_Name: Walls02Fence
   m_TagString: Untagged
@@ -549,6 +578,19 @@ Transform:
   m_Father: {fileID: 4717382511049971023}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7520541179440597303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109723516072658779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnWeight: 1
 --- !u!1 &6644543206873560150
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +603,7 @@ GameObject:
   - component: {fileID: 3081106409440269502}
   - component: {fileID: 7629205189438691511}
   - component: {fileID: 7726530768269571894}
+  - component: {fileID: 360123988803492796}
   m_Layer: 0
   m_Name: Roaddirt05
   m_TagString: Untagged
@@ -647,6 +690,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &360123988803492796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6644543206873560150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnWeight: 1
 --- !u!1 &7080492595107248704
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +715,7 @@ GameObject:
   - component: {fileID: 4365610380259138282}
   - component: {fileID: 6387325657887274864}
   - component: {fileID: 3855267932361631826}
+  - component: {fileID: 4248868102503130050}
   m_Layer: 0
   m_Name: Roaddirt04
   m_TagString: Untagged
@@ -745,6 +802,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &4248868102503130050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080492595107248704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnWeight: 1
 --- !u!1001 &165939039173966723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -957,10 +1027,6 @@ PrefabInstance:
     - target: {fileID: 6630608196591356584, guid: d2ee72ee717cc774798c94ff61cda359, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6630608196591356584, guid: d2ee72ee717cc774798c94ff61cda359, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6630608196591356584, guid: d2ee72ee717cc774798c94ff61cda359, type: 3}
       propertyPath: m_LocalPosition.x
