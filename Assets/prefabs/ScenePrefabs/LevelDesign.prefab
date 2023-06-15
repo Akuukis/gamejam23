@@ -206,11 +206,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846375691742136721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c2c598a23aad141bb01c0d3834562d, type: 3}
+  m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 12
-  tileSize: 10
+  moveSpeed: 12
+  spawnEvery: 10
+  spawnAt: 10
+  despawnAt: -10
 --- !u!1 &2673930772829974945
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,11 +259,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2673930772829974945}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c2c598a23aad141bb01c0d3834562d, type: 3}
+  m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 12
-  tileSize: 10
+  moveSpeed: 12
+  spawnEvery: 10
+  spawnAt: 10
+  despawnAt: -10
 --- !u!1 &2870600148721259981
 GameObject:
   m_ObjectHideFlags: 0
