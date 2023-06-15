@@ -47,11 +47,12 @@ public class MoveableSpawner : MonoBehaviour
         if(Random.value > spawnChance) return;
 
         GameObject newGameObject = Instantiate(getWeightedRandomSpawnable().gameObject, transform);
-        newGameObject.SetActive(true);
         Moveable moveable = newGameObject.AddComponent(typeof(Moveable)) as Moveable;
         moveable.distance = distance + spawnAt;
         moveable.moveSpeed = moveSpeed;
         moveable.despawnAt = despawnAt;
+        moveable.Update();
+        newGameObject.SetActive(true);
     }
 
     public MoveableSpawnable getWeightedRandomSpawnable()
