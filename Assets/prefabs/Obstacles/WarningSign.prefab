@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2752909401590712980}
   - component: {fileID: 2752909401590712982}
-  - component: {fileID: 2752909401590712983}
+  - component: {fileID: 5867167874810582572}
   m_Layer: 0
   m_Name: WarningSign
   m_TagString: Untagged
@@ -47,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2752909401590712983
+--- !u!114 &5867167874810582572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,10 +56,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2752909401590712981}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3882a6e1b381eda49b64fee3ef668352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 0
   impactParticlePrefab: {fileID: 1905575953860520, guid: f73afd53ee73a4040bf224699b896846, type: 3}
 --- !u!1001 &2752909401216162691
 PrefabInstance:
