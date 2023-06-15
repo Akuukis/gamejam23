@@ -229,7 +229,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f91330b5-744c-493f-bcd0-3b3b78911469
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
