@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MovingTiles : MonoBehaviour
 {
-    public float scrollSpeed = 10f;
+    public float scrollSpeed = 12f;
     private float z;
     private int tile1 = 0;
     private int tile2 = 1;
