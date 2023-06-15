@@ -5,6 +5,7 @@ public class MoveableSpawner : MonoBehaviour
 {
     public float moveSpeed = 12f;
     public float spawnEvery = 10f;
+    public float spawnChance = 1f;
     public float spawnAt = 10f;
     public float despawnAt = -10f;
     protected float z;
@@ -40,6 +41,8 @@ public class MoveableSpawner : MonoBehaviour
     }
 
     protected void spawn(float distance) {
+        if(Random.value > spawnChance) return;
+
         int index = (int)(Random.value * options.Count);
         GameObject newGameObject = Instantiate(options[index], transform);
         newGameObject.SetActive(true);
