@@ -4,11 +4,11 @@ using UnityEngine;
 public class MovingTiles : MonoBehaviour
 {
     public float scrollSpeed = 12f;
+    public float tileSize = 10f;
     private float z;
     private int tile1 = 0;
     private int tile2 = 1;
     private List<Transform> tiles = new List<Transform>();
-    private float tileSize;
     private float distance = 0;
 
     private void Start()
@@ -19,7 +19,8 @@ public class MovingTiles : MonoBehaviour
             child.gameObject.SetActive(false);
         }
 
-        tileSize = tiles[tile1].GetComponent<Renderer>().localBounds.size.z;
+        //// Leave hardcoded value, because the formula below doesn't work on Collider.
+        // tileSize = tiles[tile1].GetComponent<Renderer>().localBounds.size.z;
         z = tiles[tile1].position.z - tileSize;
     }
 
@@ -47,4 +48,5 @@ public class MovingTiles : MonoBehaviour
         tiles[tile1].localPosition = new Vector3(0, 0, z + tileSize * 2 - newPosition1);
         tiles[tile2].localPosition = new Vector3(0, 0, z + tileSize * 2 - newPosition2);
     }
+
 }
