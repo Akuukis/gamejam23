@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
 
         if(isGrinding)
         {
-            if(playerInContact.GetComponent<TestScript>().isGrinding == false)
+            if(playerInContact.GetComponent<PlayerController>().isGrinding == false)
             {
                 isGrinding = false;
                 activeCorountine = FinishMoving();
@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(this + " Won");
             }
 
-            if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+            if(movementInput.x == 0 && movementInput.y == 0)
             {
                 isGrinding = false;
                 Debug.Log(this + " Gave up");
@@ -176,6 +176,9 @@ public class PlayerController : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            other.GetComponent<PlayerImpact>().player = gameObject.transform;
+            gameObject.GetComponent<PlayerImpact>().player = other.transform;
+
             playerInContact = other.gameObject;
             // trigger.enabled = false;
             canMove = false;
@@ -183,7 +186,7 @@ public class PlayerController : MonoBehaviour
             if(activeCorountine != null)
                 StopCoroutine(activeCorountine);
 
-            if(isMoving == true && other.GetComponent<TestScript>().isMoving == false && isGrinding == false)
+            if(isMoving == true && other.GetComponent<PlayerController>().isMoving == false && isGrinding == false)
             {
                 Debug.Log(other + " was hit away!");
                 other.GetComponent<PlayerImpact>().GotHit();
@@ -194,16 +197,16 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(activeCorountine);
                 }
             }
-            else if(isMoving == true && other.GetComponent<TestScript>().isMoving == true)
+            else if(isMoving == true && other.GetComponent<PlayerController>().isMoving == true)
             {
-                if(isAccelerating == false && other.GetComponent<TestScript>().isAccelerating == false)
+                if(isAccelerating == false && other.GetComponent<PlayerController>().isAccelerating == false)
                 {
                     Debug.Log(this + " had a bounce!");
 
                     activeCorountine = MoveBackToOldPosition();
                     StartCoroutine(activeCorountine);
                 }
-                else if(isAccelerating == true && other.GetComponent<TestScript>().isAccelerating == true)
+                else if(isAccelerating == true && other.GetComponent<PlayerController>().isAccelerating == true)
                 {
                     Debug.Log(this + " is fighting back!");
 

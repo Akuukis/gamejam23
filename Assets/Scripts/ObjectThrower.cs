@@ -14,6 +14,8 @@ public class ObjectThrower : MonoBehaviour
     private GameObject objectToThrow;
     private GameObject thrownObject;
 
+    private bool isReady = false;
+
     public GameObject GetRandomObjectToThrow()
     {
         if (objectsToThrow.Count == 0)
@@ -36,32 +38,36 @@ public class ObjectThrower : MonoBehaviour
 
         thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
         thrownObject.transform.parent = gameObject.transform;
+        isReady = true;
     }
 
     public void ThrowObject()
     {
-        
-        // Instantiate the selected object to throw
-        // GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
+        if(isReady)
+        {
+            isReady = false;
+            // Instantiate the selected object to throw
+            // GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
 
-        thrownObject.transform.parent = null;
+            thrownObject.transform.parent = null;
 
-        // Apply a random rotation spin to the thrown object
-        Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
-        rb.useGravity = true;
-        Vector3 randomRotation = Random.insideUnitSphere * maxRotationSpeed;
-        rb.angularVelocity = randomRotation;
+            // Apply a random rotation spin to the thrown object
+            Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
+            rb.useGravity = true;
+            Vector3 randomRotation = Random.insideUnitSphere * maxRotationSpeed;
+            rb.angularVelocity = randomRotation;
 
-        // Calculate the initial velocity for the arc trajectory
-        float throwVelocity = throwForce / Mathf.Sin(2f * throwAngle * Mathf.Deg2Rad);
-        Vector3 throwDirection = transform.forward + (transform.up * Mathf.Sin(throwAngle * Mathf.Deg2Rad));
-        Vector3 initialVelocity = throwDirection.normalized * throwVelocity;
+            // Calculate the initial velocity for the arc trajectory
+            float throwVelocity = throwForce / Mathf.Sin(2f * throwAngle * Mathf.Deg2Rad);
+            Vector3 throwDirection = transform.forward + (transform.up * Mathf.Sin(throwAngle * Mathf.Deg2Rad));
+            Vector3 initialVelocity = throwDirection.normalized * throwVelocity;
 
-        // Apply the calculated velocity to the thrown object's Rigidbody component
-        rb.velocity = initialVelocity;
+            // Apply the calculated velocity to the thrown object's Rigidbody component
+            rb.velocity = initialVelocity;
 
-        // Add a script to the thrown object to apply damage upon impact
-        ObjectDamage objectDamage = thrownObject.AddComponent<ObjectDamage>();
-        objectDamage.impactDamage = impactDamage;
+            // Add a script to the thrown object to apply damage upon impact
+            ObjectDamage objectDamage = thrownObject.AddComponent<ObjectDamage>();
+            objectDamage.impactDamage = impactDamage;
+        }
     }
 }

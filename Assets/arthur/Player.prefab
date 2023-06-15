@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7076303004784276288}
   - component: {fileID: 7076303004784276293}
   - component: {fileID: 7076303004784276289}
+  - component: {fileID: 1502080739}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -170,6 +171,7 @@ MonoBehaviour:
   col: {fileID: 7076303004784276297}
   trigger: {fileID: 7076303004784276290}
   oldPosition: {x: 0, y: 0, z: 0}
+  playerInput: {fileID: 0}
 --- !u!114 &7076303004784276289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,11 +213,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 78a1b8b4-7bbe-4cf0-9a0c-e1218e9c55d4
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7076303004784276293}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: SetCursor
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f91330b5-744c-493f-bcd0-3b3b78911469
+    m_ActionName: Player/Look[/XInputControllerWindows/rightStick]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1502080739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7076303004784276296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d68509fd8ee6b45b916aeff5106846, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 7076303004784276289}
+  cursorTransform: {fileID: 0}
+  cursorSpeed: 1000
 --- !u!1 &7076303005021486181
 GameObject:
   m_ObjectHideFlags: 0

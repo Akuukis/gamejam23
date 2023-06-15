@@ -136,7 +136,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "Left Stick",
                     "id": "bb7abf12-cd05-4ec0-a015-4af611ad7699",
                     "path": "2DVector",
                     "interactions": "",
