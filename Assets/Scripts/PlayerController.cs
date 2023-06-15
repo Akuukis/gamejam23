@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private GameObject playerInContact;
 
     private Vector2 movementInput = Vector2.zero;
-    private Vector2 rotationInput;
+    private Vector2 rotationInput = Vector2.zero;
     private bool threw = false;
 
     public PlayerInput playerInput;
@@ -62,33 +62,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        // switch(playerInput.currentControlScheme)
-        // {
-        //     case "Keyboard":
-        //         Cursor.visible = true;
-                
-        //         Vector3 mousePos = Input.mousePosition;
-        //         mousePos.z = 11f;
-        //         Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
-                
-        //         Vector3 turretOrientation = worldMouse - turret.position;
-        //         turretOrientation.y = 0f;
-        //         turret.forward = turretOrientation;
-        //         break;
-        //     case "Gamepad":
-        //         Cursor.visible = false;
-
-        //         Vector3 lookDirection = new Vector3(rotationInput.x, 0, rotationInput.y);
-        //         // turret.transform.rotation = Quaternion.LookRotation(lookDirection);
-        //         turret.forward = lookDirection;
-        //         break;
-        // }
-
-        if(playerInput.currentControlScheme == "Keyboard")
+    {    
+        if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
-            // Cursor.visible = true;
-            
+            Cursor.visible = true;
+                
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 11f;
             Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
@@ -97,27 +75,49 @@ public class PlayerController : MonoBehaviour
             turretOrientation.y = 0f;
             turret.forward = turretOrientation;
         }
-        else if(playerInput.currentControlScheme == "Gamepad")
+        else if(rotationInput.x != 0 || rotationInput.y != 0)
         {
             Cursor.visible = false;
             Vector3 lookDirection = new Vector3(rotationInput.x, 0, rotationInput.y);
             turret.transform.rotation = Quaternion.LookRotation(lookDirection);
         }
 
+        // if(playerInput.currentControlScheme == "Keyboard")
+        // {
+        //     // Cursor.visible = true;
+            
+        //     Vector3 mousePos = Input.mousePosition;
+        //     mousePos.z = 11f;
+        //     Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+            
+        //     Vector3 turretOrientation = worldMouse - turret.position;
+        //     turretOrientation.y = 0f;
+        //     turret.forward = turretOrientation;
+        // }
+        // else if(playerInput.currentControlScheme == "Gamepad")
+        // {
+        //     Cursor.visible = false;
+        //     Vector3 lookDirection = new Vector3(rotationInput.x, 0, rotationInput.y);
+        //     turret.transform.rotation = Quaternion.LookRotation(lookDirection);
+        // }
+
         if(canMove == true)
         {
+            // if(Input.GetAxis("Vertical") != 0)
             if(movementInput.y != 0 && isMoving == false)
             {
                 trigger.enabled = true;
                 isMoving = true;
                 canMove = false;
                 vDirection = movementInput.y;
+                // vDirection = Input.GetAxisRaw("Vertical");
 
                 oldPosition = transform.position;
                 activeCorountine = GoVerticaly();
                 StartCoroutine(activeCorountine);
             }
 
+            // if(Input.GetAxis("Horizontal") != 0)
             if(movementInput.y == 0)
             {
                 if(movementInput.x != 0 && isMoving == false)
@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
                     isMoving = true;
                     canMove = false;
                     hDirection = movementInput.x;
+                    // hDirection = Input.GetAxisRaw("Horizontal");
 
                     oldPosition = transform.position;
                     activeCorountine = GoHorizontaly();
@@ -140,6 +141,7 @@ public class PlayerController : MonoBehaviour
                 isAccelerating = true;
         }
 
+        // if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
         if(movementInput.x == 0 && movementInput.y == 0)
         {
             isAccelerating = false;
