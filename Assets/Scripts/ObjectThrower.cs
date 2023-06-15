@@ -14,7 +14,8 @@ public class ObjectThrower : MonoBehaviour
     private GameObject objectToThrow;
     private GameObject thrownObject;
 
-    private bool isReady = false;
+    [HideInInspector]
+    public bool isReady = false;
 
     public GameObject GetRandomObjectToThrow()
     {
@@ -38,7 +39,6 @@ public class ObjectThrower : MonoBehaviour
 
         thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
         thrownObject.transform.parent = gameObject.transform;
-        isReady = true;
     }
 
     public void ThrowObject()

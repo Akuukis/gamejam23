@@ -28,6 +28,11 @@ public class ObjectSpawnController : MonoBehaviour
         }
     }
 
+    private void ReadyToThrow()
+    {
+        objectThrower.isReady = true;
+    }
+
     private void SpawnObjectToThrow()
     {
         objectThrower.CheckObjectToTrhowList();
