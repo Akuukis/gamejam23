@@ -7,6 +7,8 @@ public class PlayerImpact : MonoBehaviour
     private int xValue;
     private int zValue;
 
+    private float impactDelay;
+
     private float hDirection;
     private float vDirection;
 
@@ -36,12 +38,14 @@ public class PlayerImpact : MonoBehaviour
             gameObject.GetComponent<TestScript>().canMove = false;
             xValue = gameObject.GetComponent<TestScript>().xValue;
             zValue = gameObject.GetComponent<TestScript>().zValue;
+            impactDelay = gameObject.GetComponent<TestScript>().impactDelay;
         }
         else if(gameObject.GetComponent<PlayerController>() == true)
         {
             gameObject.GetComponent<PlayerController>().canMove = false;
             xValue = gameObject.GetComponent<PlayerController>().xValue;
             zValue = gameObject.GetComponent<PlayerController>().zValue;
+            impactDelay = gameObject.GetComponent<PlayerController>().impactDelay;
         }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward);
@@ -173,7 +177,7 @@ public class PlayerImpact : MonoBehaviour
         gameObject.GetComponent<TestScript>().isMoving = false;
         gameObject.GetComponent<TestScript>().trigger.enabled = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         gameObject.GetComponent<TestScript>().canMove = true;
         
@@ -220,7 +224,7 @@ public class PlayerImpact : MonoBehaviour
         gameObject.GetComponent<PlayerController>().trigger.enabled = false;
         gameObject.GetComponent<PlayerController>().isReturning = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         gameObject.GetComponent<PlayerController>().canMove = true;
 
@@ -267,7 +271,7 @@ public class PlayerImpact : MonoBehaviour
         gameObject.GetComponent<PlayerController>().trigger.enabled = false;
         gameObject.GetComponent<PlayerController>().isReturning = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         gameObject.GetComponent<PlayerController>().canMove = true;
 
@@ -332,7 +336,7 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.GetComponent<PlayerController>() == true)
             gameObject.GetComponent<PlayerController>().isMoving = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
@@ -360,7 +364,7 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.name == "Player")
             gameObject.GetComponent<PlayerController>().isMoving = false;
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
@@ -388,7 +392,7 @@ public class PlayerImpact : MonoBehaviour
         if(gameObject.name == "Player")
             gameObject.GetComponent<PlayerController>().isMoving = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
         
         if(gameObject.GetComponent<TestScript>() == true)
             gameObject.GetComponent<TestScript>().canMove = true;
@@ -439,7 +443,7 @@ public class PlayerImpact : MonoBehaviour
         gameObject.GetComponent<PlayerController>().trigger.enabled = false;
         gameObject.GetComponent<PlayerController>().isReturning = false;
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         gameObject.GetComponent<PlayerController>().canMove = true;
 
@@ -486,7 +490,7 @@ public class PlayerImpact : MonoBehaviour
         gameObject.GetComponent<PlayerController>().trigger.enabled = false;
         gameObject.GetComponent<PlayerController>().isReturning = false;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
 
         gameObject.GetComponent<PlayerController>().canMove = true;
 

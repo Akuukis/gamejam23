@@ -10,6 +10,8 @@ public class TestScript : MonoBehaviour
     public int xValue = 1;
     public int zValue = 1;
 
+    public float impactDelay = 0.5f;
+
     private float vDirection;
     private float hDirection;
 
@@ -153,7 +155,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
         canMove = true;
         yield return null;
     }
@@ -178,7 +180,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
         canMove = true;
         yield return null;
     }
@@ -194,7 +196,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
         canMove = true;
         yield return null;
     }
@@ -210,7 +212,7 @@ public class TestScript : MonoBehaviour
 
         isMoving = false;
         trigger.enabled = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(impactDelay);
         canMove = true;
         yield return null;
     }
