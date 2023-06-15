@@ -4,12 +4,14 @@ using UnityEngine;
 public class MoveableSpawner : MonoBehaviour
 {
     public float moveSpeed = 12f;
-    public float spawnEvery = 10f;
+    public float spawnStep = 10f;
+    public float spawnMinDist = 10f;
     public float spawnChance = 1f;
     public float spawnAt = 10f;
     public float despawnAt = -10f;
     protected List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
-    protected float distance = 0;
+    protected float distanceLastStep = 0;
+    protected float distanceLastSpawn = 0;
     protected float totalWeight = 0;
 
     protected void Start()
@@ -24,10 +26,7 @@ public class MoveableSpawner : MonoBehaviour
             spawnable.gameObject.SetActive(false);
         }
 
-        //// Leave hardcoded value, because the formula below doesn't work on Collider.
-        // tileSize = tiles[tile1].GetComponent<Renderer>().localBounds.size.z;
-
-        for(float i=0; i<=spawnAt; i=i+spawnEvery)
+        for(float i=0; i<=spawnAt; i=i+spawnStep)
         {
             spawn(i);
         }
@@ -36,15 +35,17 @@ public class MoveableSpawner : MonoBehaviour
     protected void Update()
     {
         float newDistance = Time.time * moveSpeed;
-        if(newDistance > distance)
+        if(newDistance > distanceLastStep)
         {
-            distance = distance + spawnEvery;
-            spawn(distance);
+            distanceLastStep = distanceLastStep + spawnStep;
+            spawn(distanceLastStep);
         }
     }
 
     protected void spawn(float distance) {
         if(Random.value > spawnChance) return;
+        if(distanceLastSpawn + spawnMinDist > distance) return;
+        distanceLastSpawn = distance;
 
         GameObject newGameObject = Instantiate(getWeightedRandomSpawnable().gameObject, transform);
         Moveable moveable = newGameObject.AddComponent(typeof(Moveable)) as Moveable;

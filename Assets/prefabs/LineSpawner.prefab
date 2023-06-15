@@ -52,7 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  spawnEvery: 8
+  spawnStep: 4
+  spawnMinDist: 16
   spawnChance: 0.1
   spawnAt: 50
   despawnAt: -10
