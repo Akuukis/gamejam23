@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,52 +33,143 @@ public class PlayerController : MonoBehaviour
     public IEnumerator activeCorountine;
     private GameObject playerInContact;
 
-    void Update()
+    private Vector2 movementInput = Vector2.zero;
+    private Vector2 rotationInput = Vector2.zero;
+    private bool threw = false;
+
+    public PlayerInput playerInput;
+
+    public void OnMove(InputAction.CallbackContext context)
     {
-        if(Input.GetAxis("Vertical") != 0)
+        movementInput = context.ReadValue<Vector2>();
+    }
+
+    public void SetCursor(InputAction.CallbackContext context)
+    {
+        rotationInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnAction(InputAction.CallbackContext context)
+    {
+        threw = context.ReadValue<bool>();
+        threw = context.action.triggered;
+    }
+
+    void Start()
+    {
+        Cursor.visible = false;
+        playerInput = gameObject.GetComponent<PlayerInput>();
+    }
+
+    void Update()
+    {    
+        // if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        // {
+        //     Cursor.visible = true;
+            
+        //     Vector3 mousePos = Input.mousePosition;
+        //     mousePos.z = 11f;
+        //     Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+            
+        //     Vector3 turretOrientation = worldMouse - turret.position;
+        //     turretOrientation.y = 0f;
+        //     turret.forward = turretOrientation;
+        // }
+
+        // switch(playerInput.currentControlScheme)
+        // {
+        //     case "Keyboard":
+
+        // }
+
+        if(playerInput.currentControlScheme == "Keyboard")
         {
-            isAccelerating = true;
-            if(isMoving == false && canMove == true)
+            Cursor.visible = true;
+            
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = 11f;
+            Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+            
+            Vector3 turretOrientation = worldMouse - turret.position;
+            turretOrientation.y = 0f;
+            turret.forward = turretOrientation;
+        }
+        else if(rotationInput.x != 0 || rotationInput.y != 0)
+        {
+            Cursor.visible = false;
+            Vector3 lookDirection = new Vector3(rotationInput.x, 0, rotationInput.y);
+            turret.transform.rotation = Quaternion.LookRotation(lookDirection);
+        }
+
+        // if(playerInput.currentControlScheme == "Keyboard")
+        // {
+        //     // Cursor.visible = true;
+            
+        //     Vector3 mousePos = Input.mousePosition;
+        //     mousePos.z = 11f;
+        //     Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+            
+        //     Vector3 turretOrientation = worldMouse - turret.position;
+        //     turretOrientation.y = 0f;
+        //     turret.forward = turretOrientation;
+        // }
+        // else if(playerInput.currentControlScheme == "Gamepad")
+        // {
+        //     Cursor.visible = false;
+        //     Vector3 lookDirection = new Vector3(rotationInput.x, 0, rotationInput.y);
+        //     turret.transform.rotation = Quaternion.LookRotation(lookDirection);
+        // }
+
+        if(canMove == true)
+        {
+            // if(Input.GetAxis("Vertical") != 0)
+            if(movementInput.y != 0 && isMoving == false)
             {
                 trigger.enabled = true;
                 isMoving = true;
                 canMove = false;
-                vDirection = Input.GetAxisRaw("Vertical");
+                vDirection = movementInput.y;
+                // vDirection = Input.GetAxisRaw("Vertical");
 
                 oldPosition = transform.position;
                 activeCorountine = GoVerticaly();
                 StartCoroutine(activeCorountine);
             }
-        }
 
-        if(Input.GetAxis("Horizontal") != 0)
-        {
-            isAccelerating = true;
-            if(isMoving == false && canMove == true)
+            // if(Input.GetAxis("Horizontal") != 0)
+            if(movementInput.y == 0)
             {
-                trigger.enabled = true;
-                isMoving = true;
-                canMove = false;
-                hDirection = Input.GetAxisRaw("Horizontal");
+                if(movementInput.x != 0 && isMoving == false)
+                {
+                    trigger.enabled = true;
+                    isMoving = true;
+                    canMove = false;
+                    hDirection = movementInput.x;
+                    // hDirection = Input.GetAxisRaw("Horizontal");
 
-                oldPosition = transform.position;
-                activeCorountine = GoHorizontaly();
-                StartCoroutine(activeCorountine);
+                    oldPosition = transform.position;
+                    activeCorountine = GoHorizontaly();
+                    StartCoroutine(activeCorountine);
+                }
             }
         }
 
-        if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        if(movementInput.x != 0 || movementInput.y != 0)
+        {
+            if(canMove == false)
+                isAccelerating = true;
+        }
+
+        // if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
+        if(movementInput.x == 0 && movementInput.y == 0)
         {
             isAccelerating = false;
         }
 
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = 11f;
-        Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
-        
-        Vector3 turretOrientation = worldMouse - turret.position;
-        turretOrientation.y = 0f;
-        turret.forward = turretOrientation;
+        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
+
+        // Debug.Log(move);
+
 
         if(isGrinding)
         {
@@ -207,7 +299,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator FinishMoving()
     {
-        Debug.Log(newPosition);
+        Debug.Log("Won the fight");
         while(transform.position != newPosition)
         {
             float step = movementSpeed * Time.deltaTime;
