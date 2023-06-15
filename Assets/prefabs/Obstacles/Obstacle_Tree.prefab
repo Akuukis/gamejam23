@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactDamage: 5
-  impactParticlePrefab: {fileID: 0}
+  impactParticlePrefab: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
 --- !u!1001 &7519968783296174278
 PrefabInstance:
   m_ObjectHideFlags: 0
