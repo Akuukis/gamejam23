@@ -67,8 +67,16 @@ public class PlayerImpact : MonoBehaviour
 
         if(vDirection == 1f || vDirection == -1f)
         {
-            activeCorountine = VerticalImpact();
-            StartCoroutine(activeCorountine);
+            if(gameObject.GetComponent<TestScript>() == true)
+            {
+                activeCorountine = VerticalImpact();
+                StartCoroutine(activeCorountine);
+            }
+            else if(gameObject.GetComponent<PlayerController>() == true)
+            {
+                activeCorountine = PlayerVerticalImpact();
+                StartCoroutine(activeCorountine);
+            }
         }
     }
 
@@ -77,11 +85,20 @@ public class PlayerImpact : MonoBehaviour
         if(activeCorountine != null)
             StopCoroutine(activeCorountine);
 
-        if(gameObject.name == "TestOpponent")
+        if(gameObject.GetComponent<TestScript>() == true)
+        {
             oldPosition = gameObject.GetComponent<TestScript>().oldPosition;
-
-        if(gameObject.name == "Player")
+            gameObject.GetComponent<TestScript>().canMove = false;
+            xValue = gameObject.GetComponent<TestScript>().xValue;
+            zValue = gameObject.GetComponent<TestScript>().zValue;
+        }
+        else if(gameObject.GetComponent<PlayerController>() == true)
+        {
             oldPosition = gameObject.GetComponent<PlayerController>().oldPosition;
+            gameObject.GetComponent<PlayerController>().canMove = false;
+            xValue = gameObject.GetComponent<PlayerController>().xValue;
+            zValue = gameObject.GetComponent<PlayerController>().zValue;
+        }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -92,14 +109,30 @@ public class PlayerImpact : MonoBehaviour
 
         if(hDirection == 1f || hDirection == -1f)
         {
-            activeCorountine = HorizontalLoss();
-            StartCoroutine(activeCorountine);
+            if(gameObject.GetComponent<TestScript>() == true)
+            {
+                activeCorountine = HorizontalLoss();
+                StartCoroutine(activeCorountine);
+            }
+            else if(gameObject.GetComponent<PlayerController>() == true)
+            {
+                activeCorountine = PlayerHorizontalLoss();
+                StartCoroutine(activeCorountine);
+            }
         }
 
         if(vDirection == 1f || vDirection == -1f)
         {
-            activeCorountine = VerticalLoss();
-            StartCoroutine(activeCorountine);
+            if(gameObject.GetComponent<TestScript>() == true)
+            {
+                activeCorountine = VerticalLoss();
+                StartCoroutine(activeCorountine);
+            }
+            else if(gameObject.GetComponent<PlayerController>() == true)
+            {
+                activeCorountine = PlayerVerticalLoss();
+                StartCoroutine(activeCorountine);
+            }
         }
     }
 
@@ -170,6 +203,53 @@ public class PlayerImpact : MonoBehaviour
         if(newPosition.x < -3.5f * xValue)
         {
             newPosition.x = -3.5f * xValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        gameObject.GetComponent<PlayerController>().isMoving = false;
+        gameObject.GetComponent<PlayerController>().trigger.enabled = false;
+        gameObject.GetComponent<PlayerController>().isReturning = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.GetComponent<PlayerController>().canMove = true;
+
+        yield return null;
+    }
+
+    IEnumerator PlayerVerticalImpact()
+    {
+        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * -vDirection);
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        if(newPosition.z > 3.5f * zValue)
+        {
+            newPosition.z = 3.5f * zValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        if(newPosition.z < -3.5f * zValue)
+        {
+            newPosition.z = -3.5f * zValue;
 
             gameObject.GetComponent<PlayerController>().trigger.enabled = true;
             gameObject.GetComponent<PlayerController>().isMoving = true;
@@ -290,7 +370,7 @@ public class PlayerImpact : MonoBehaviour
 
         yield return null;
     }
-
+    
     IEnumerator VerticalLoss()
     {
         newPosition = new Vector3(oldPosition.x, oldPosition.y, oldPosition.z + 3.5f * -vDirection);
@@ -315,6 +395,100 @@ public class PlayerImpact : MonoBehaviour
 
         if(gameObject.GetComponent<PlayerController>() == true)
             gameObject.GetComponent<PlayerController>().canMove = true;
+
+        yield return null;
+    }
+
+    IEnumerator PlayerHorizontalLoss()
+    {
+        newPosition = new Vector3(oldPosition.x + 3.5f * -hDirection , oldPosition.y, oldPosition.z);
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        if(newPosition.x > 3.5f * xValue)
+        {
+            newPosition.x = 3.5f * xValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        if(newPosition.x < -3.5f * xValue)
+        {
+            newPosition.x = -3.5f * xValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        gameObject.GetComponent<PlayerController>().isMoving = false;
+        gameObject.GetComponent<PlayerController>().trigger.enabled = false;
+        gameObject.GetComponent<PlayerController>().isReturning = false;
+        
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.GetComponent<PlayerController>().canMove = true;
+
+        yield return null;
+    }
+
+    IEnumerator PlayerVerticalLoss()
+    {
+        newPosition = new Vector3(oldPosition.x, oldPosition.y, oldPosition.z + 3.5f * -vDirection);
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        if(newPosition.z > 3.5f * zValue)
+        {
+            newPosition.z = 3.5f * zValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        if(newPosition.z < -3.5f * zValue)
+        {
+            newPosition.z = -3.5f * zValue;
+
+            gameObject.GetComponent<PlayerController>().trigger.enabled = true;
+            gameObject.GetComponent<PlayerController>().isMoving = true;
+            gameObject.GetComponent<PlayerController>().isReturning = true;
+        }
+
+        while(transform.position != newPosition)
+        {
+            float step = 7f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, newPosition, step);
+            yield return null;
+        }
+
+        gameObject.GetComponent<PlayerController>().isMoving = false;
+        gameObject.GetComponent<PlayerController>().trigger.enabled = false;
+        gameObject.GetComponent<PlayerController>().isReturning = false;
+
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.GetComponent<PlayerController>().canMove = true;
 
         yield return null;
     }

@@ -33,9 +33,6 @@ public class TestScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.O) == true)
         {
-
-
-
             isAccelerating = true;
             if(isMoving == false && canMove == true)
             {
@@ -43,8 +40,8 @@ public class TestScript : MonoBehaviour
                 isMoving = true;
                 canMove = false;
 
-                // activeCorountine = GoVerticaly(-1f);
-                activeCorountine = GoHorizontaly(-1f);
+                activeCorountine = GoVerticaly(-1f);
+                // activeCorountine = GoHorizontaly(-1f);
                 StartCoroutine(activeCorountine);
             }
         }
@@ -58,8 +55,8 @@ public class TestScript : MonoBehaviour
                 isMoving = true;
                 canMove = false;
 
-                // activeCorountine = GoVerticaly(1f);
-                activeCorountine = GoHorizontaly(1f);
+                activeCorountine = GoVerticaly(1f);
+                // activeCorountine = GoHorizontaly(1f);
                 StartCoroutine(activeCorountine);
             }
         }
