@@ -16,6 +16,8 @@ public class ObjectThrower : MonoBehaviour
 
     [HideInInspector]
     public bool isReady = false;
+	public AudioSource audioSource; // Reference to the AudioSource component
+
 
     public GameObject GetRandomObjectToThrow()
     {
@@ -48,7 +50,12 @@ public class ObjectThrower : MonoBehaviour
             isReady = false;
             // Instantiate the selected object to throw
             // GameObject thrownObject = Instantiate(objectToThrow, transform.position, Quaternion.identity);
-
+			
+			 if (audioSource != null)
+            {
+                audioSource.Play(); // Play the sound from the AudioSource component
+            }
+			
             thrownObject.transform.parent = null;
 
             // Apply a random rotation spin to the thrown object
