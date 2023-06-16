@@ -38932,7 +38932,6 @@ GameObject:
   - component: {fileID: 4397334591890123668}
   - component: {fileID: 4397334591890123669}
   - component: {fileID: 1330124591152482258}
-  - component: {fileID: 655871561461643224}
   m_Layer: 0
   m_Name: FX_Death_AA
   m_TagString: Untagged
@@ -43765,7 +43764,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2099115260984435879, guid: f9e595a556b03a14485db3504c05de7c, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2cf3f853c6cb3574da0215f26204b241, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -43851,19 +43850,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &655871561461643224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4397334591890123670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371bd8227fbecb748a27f43eed0b61d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioClips: []
 --- !u!1 &4770400468387908731
 GameObject:
   m_ObjectHideFlags: 0

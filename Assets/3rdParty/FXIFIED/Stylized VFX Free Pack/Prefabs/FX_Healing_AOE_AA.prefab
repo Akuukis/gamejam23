@@ -28909,7 +28909,6 @@ GameObject:
   - component: {fileID: 6809944706259094417}
   - component: {fileID: 6809944706259094418}
   - component: {fileID: 5205498642962744563}
-  - component: {fileID: 1814889975165837945}
   m_Layer: 0
   m_Name: FX_Healing_AOE_AA
   m_TagString: Untagged
@@ -33742,9 +33741,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2099115260984435879, guid: f9e595a556b03a14485db3504c05de7c, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 98e7db56571604346acd37c9d2f60d17, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -33828,19 +33827,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1814889975165837945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6809944706259094419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371bd8227fbecb748a27f43eed0b61d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioClips: []
 --- !u!1 &7823922038308135934
 GameObject:
   m_ObjectHideFlags: 0
