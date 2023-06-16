@@ -22,6 +22,7 @@ public class TestScript : MonoBehaviour
     public GameObject playerTwoModel;
 
     public GameObject[] buttons;
+    public GameObject[] players;
 
     private int i;
 
@@ -45,6 +46,7 @@ public class TestScript : MonoBehaviour
         spawn = new Vector3(-3.5f, 0, 0);
         gameObject.GetComponent<PlayerInputManager>().playerPrefab = playerOneModel;
         pim.JoinPlayer();
+        spawn = new Vector3(3.5f, 0, 0);
         gameObject.GetComponent<PlayerInputManager>().playerPrefab = playerTwoModel;
         pim.JoinPlayer();
     }
@@ -63,13 +65,16 @@ public class TestScript : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject player in players)
+            Destroy(player);
+
+        GetPlayers();
     }
 
     void SetPlayerTransform(Transform player)
     {
         player.position = spawn;
-        spawn = new Vector3(3.5f, 0, 0);
     }
 
     public void SetControls(int controllerMode)
