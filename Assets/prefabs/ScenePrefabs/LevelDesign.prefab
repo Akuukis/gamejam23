@@ -82,12 +82,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prespawn: 1
+  prespawnCount: 3
+  prespawnOffset: 20
   moveSpeed: 8
-  spawnStep: 10
-  spawnMinDist: 10
-  spawnChance: 1
-  spawnAt: 10
+  spawnAtFrom: 20
+  spawnAtTo: 20
   despawnAt: -10
   spawnables:
   - {fileID: 6504046304780497771, guid: 7915f0d1d45af364bad3f03926b1c328, type: 3}
@@ -136,12 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prespawn: 1
+  prespawnCount: 3
+  prespawnOffset: 20
   moveSpeed: 8
-  spawnStep: 10
-  spawnMinDist: 10
-  spawnChance: 1
-  spawnAt: 10
+  spawnAtFrom: 20
+  spawnAtTo: 20
   despawnAt: -10
   spawnables:
   - {fileID: 5903979178741382101, guid: c04c27ce62ac3264581ab9eab917bc8b, type: 3}

@@ -44,12 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3fee97310cf79e4babe01aeede88b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prespawn: 0
+  prespawnCount: 1
+  prespawnOffset: 10
   moveSpeed: 20
-  spawnStep: 4
-  spawnMinDist: 30
-  spawnChance: 0.1
-  spawnAt: 50
+  spawnAtFrom: 50
+  spawnAtTo: 150
   despawnAt: -10
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}

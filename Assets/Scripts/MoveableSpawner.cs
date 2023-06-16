@@ -3,16 +3,13 @@ using UnityEngine;
 
 public class MoveableSpawner : MonoBehaviour
 {
-    public bool prespawn = false;
+    public int prespawnCount = 3;
+    public float prespawnOffset = 10f;
     public float moveSpeed = 12f;
-    public float spawnStep = 10f;
-    public float spawnMinDist = 10f;
-    public float spawnChance = 1f;
-    public float spawnAt = 10f;
+    public float spawnAtFrom = 20f;
+    public float spawnAtTo = 20f;
     public float despawnAt = -10f;
     public List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
-    protected float distanceLastStep = 0;
-    protected float distanceLastSpawn = -9999;
     protected float totalWeight = 0;
 
     protected void Start()
@@ -22,36 +19,20 @@ public class MoveableSpawner : MonoBehaviour
             totalWeight += spawnable.spawnWeight;
         }
 
-
-        if(prespawn)
+        for(float i=0; i<prespawnCount; i++)
         {
-            for(float i=-spawnAt; i<=0; i=i+spawnStep)
-            {
-                spawn(i);
-            }
+            spawn(-i * prespawnOffset / 2);
         }
     }
 
-    protected void Update()
-    {
-        float newDistance = Time.time * moveSpeed;
-        if(newDistance > distanceLastStep)
-        {
-            distanceLastStep = distanceLastStep + spawnStep;
-            spawn(distanceLastStep);
-        }
-    }
-
-    protected void spawn(float distance) {
-        if(Random.value > spawnChance) return;
-        if(distanceLastSpawn + spawnMinDist > distance) return;
-        distanceLastSpawn = distance;
-
+    public void spawn(float offset = 0f) {
         GameObject newGameObject = Instantiate(getWeightedRandomSpawnable().gameObject, transform);
         Moveable moveable = newGameObject.AddComponent(typeof(Moveable)) as Moveable;
-        moveable.distance = distance + spawnAt;
+        float newDistance = Time.time * moveSpeed;
+        moveable.distance = newDistance + Random.Range(spawnAtFrom, spawnAtTo) + offset;
         moveable.moveSpeed = moveSpeed;
         moveable.despawnAt = despawnAt;
+        moveable.spawner = transform.gameObject.GetComponent<MoveableSpawner>();
         moveable.Update();
         newGameObject.SetActive(true);
     }
