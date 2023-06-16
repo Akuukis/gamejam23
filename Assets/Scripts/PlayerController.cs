@@ -214,13 +214,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator GoVerticaly()
     {
-        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * vDirection);
+        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f * vDirection);
 
-        if(newPosition.z > 3.5f * zValue)
-            newPosition.z = 3.5f * zValue;
+        if(newPosition.z > 5f * zValue)
+            newPosition.z = 5f * zValue;
 
-        if(newPosition.z < -3.5f * zValue)
-            newPosition.z = -3.5f * zValue;
+        if(newPosition.z < -5f * zValue)
+            newPosition.z = -5f * zValue;
 
         while(transform.position != newPosition && isGrinding == false)
         {

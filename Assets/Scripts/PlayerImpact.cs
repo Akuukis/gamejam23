@@ -137,7 +137,7 @@ public class PlayerImpact : MonoBehaviour
 
     IEnumerator PlayerVerticalImpact()
     {
-        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 3.5f * -vDirection);
+        newPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 5f * -vDirection);
 
         while(transform.position != newPosition)
         {
@@ -146,18 +146,18 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        if(newPosition.z > 3.5f * zValue)
+        if(newPosition.z > 5f * zValue)
         {
-            newPosition.z = 3.5f * zValue;
+            newPosition.z = 5f * zValue;
 
             gameObject.GetComponent<PlayerController>().trigger.enabled = true;
             gameObject.GetComponent<PlayerController>().isMoving = true;
             gameObject.GetComponent<PlayerController>().isReturning = true;
         }
 
-        if(newPosition.z < -3.5f * zValue)
+        if(newPosition.z < -5f * zValue)
         {
-            newPosition.z = -3.5f * zValue;
+            newPosition.z = -5f * zValue;
 
             gameObject.GetComponent<PlayerController>().trigger.enabled = true;
             gameObject.GetComponent<PlayerController>().isMoving = true;
@@ -231,7 +231,7 @@ public class PlayerImpact : MonoBehaviour
 
     IEnumerator PlayerVerticalLoss()
     {
-        newPosition = new Vector3(oldPosition.x, oldPosition.y, oldPosition.z + 3.5f * -vDirection);
+        newPosition = new Vector3(oldPosition.x, oldPosition.y, oldPosition.z + 5f * -vDirection);
 
         while(transform.position != newPosition)
         {
@@ -240,18 +240,18 @@ public class PlayerImpact : MonoBehaviour
             yield return null;
         }
 
-        if(newPosition.z > 3.5f * zValue)
+        if(newPosition.z > 5f * zValue)
         {
-            newPosition.z = 3.5f * zValue;
+            newPosition.z = 5f * zValue;
 
             gameObject.GetComponent<PlayerController>().trigger.enabled = true;
             gameObject.GetComponent<PlayerController>().isMoving = true;
             gameObject.GetComponent<PlayerController>().isReturning = true;
         }
 
-        if(newPosition.z < -3.5f * zValue)
+        if(newPosition.z < -5f * zValue)
         {
-            newPosition.z = -3.5f * zValue;
+            newPosition.z = -5f * zValue;
 
             gameObject.GetComponent<PlayerController>().trigger.enabled = true;
             gameObject.GetComponent<PlayerController>().isMoving = true;
