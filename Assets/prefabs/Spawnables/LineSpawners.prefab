@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 18
+  moveSpeed: 20
   spawnAtFrom: 50
   spawnAtTo: 300
   spawnStep: 1
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 18
+  moveSpeed: 20
   spawnAtFrom: 50
   spawnAtTo: 300
   spawnStep: 1
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 18
+  moveSpeed: 20
   spawnAtFrom: 50
   spawnAtTo: 300
   spawnStep: 1
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 18
+  moveSpeed: 20
   spawnAtFrom: 50
   spawnAtTo: 300
   spawnStep: 1
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 18
+  moveSpeed: 20
   spawnAtFrom: 50
   spawnAtTo: 300
   spawnStep: 1
