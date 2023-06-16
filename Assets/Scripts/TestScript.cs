@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class TestScript : MonoBehaviour
 {
@@ -15,16 +17,40 @@ public class TestScript : MonoBehaviour
     private InputDevice playerOneDevice;
     private InputDevice playerTwoDevice;
 
+    [Header("Player Prefabs")]
+    public GameObject playerOneModel;
+    public GameObject playerTwoModel;
+
+    public GameObject[] buttons;
+
+    private int i;
+
+    void Start()
+    {
+        i = 0;
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(buttons[i]);
+    }
+
+    public void CycleButtons()
+    {
+        i++;
+        Debug.Log(i);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(buttons[i]);
+    }
+
     public void GetPlayers()
     {
         spawn = new Vector3(-3.5f, 0, 0);
+        gameObject.GetComponent<PlayerInputManager>().playerPrefab = playerOneModel;
         pim.JoinPlayer();
+        gameObject.GetComponent<PlayerInputManager>().playerPrefab = playerTwoModel;
         pim.JoinPlayer();
     }
 
-    void OnPlayerJoined(PlayerInput playerInput)
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
-        Debug.Log("New PLayer");
         SetPlayerTransform(playerInput.transform);
         
         // PlayerInput.all[0].SwitchCurrentControlScheme("Gamepad", Gamepad.current);
@@ -33,6 +59,11 @@ public class TestScript : MonoBehaviour
 
         if(PlayerInput.all[0].currentControlScheme == "Gamepad" && PlayerInput.all[1].currentControlScheme == "Gamepad")
             Cursor.visible = false;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void SetPlayerTransform(Transform player)
