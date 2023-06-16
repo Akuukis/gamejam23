@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -22,7 +21,7 @@ public class MenuManager : MonoBehaviour
     public GameObject playerTwoModel;
 
     public GameObject[] buttons;
-    public GameObject[] players;
+    private GameObject[] players;
 
     void Start()
     {
@@ -81,7 +80,7 @@ public class MenuManager : MonoBehaviour
     {
         switch(controllerMode)
         {
-            case 4:
+            case 4:        
                 // If player one chooses to use keyboard, automatically assign the controller to player two.
                 playerOne = "Keyboard";
                 playerOneDevice = Keyboard.current;

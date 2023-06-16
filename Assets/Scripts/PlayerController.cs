@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
     public IEnumerator activeCorountine;
     private GameObject playerInContact;
 
-    private Vector2 movementInput = Vector2.zero;
+    [HideInInspector]
+    public Vector2 movementInput = Vector2.zero;
     private Vector2 rotationInput = Vector2.zero;
     private bool threw = false;
 
