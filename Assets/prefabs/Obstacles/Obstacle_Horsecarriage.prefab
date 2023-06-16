@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 251401032691778527}
-  - component: {fileID: 6234929268878206394}
-  - component: {fileID: 4574892022218612978}
   m_Layer: 0
   m_Name: Obstacle_Horsecarriage
   m_TagString: Untagged
@@ -35,33 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &6234929268878206394
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6633316145680603601}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.88
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4574892022218612978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6633316145680603601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactDamage: 5
-  impactParticlePrefab: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
 --- !u!1 &6648824693393983345
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,6 +44,8 @@ GameObject:
   - component: {fileID: 8002600154999314322}
   - component: {fileID: 5203793728324511402}
   - component: {fileID: 195463691535522089}
+  - component: {fileID: 525730321749153002}
+  - component: {fileID: 1276314760391665717}
   m_Layer: 0
   m_Name: obstacle_horsecarriage_low
   m_TagString: Untagged
@@ -145,6 +118,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &525730321749153002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648824693393983345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactDamage: 5
+  impactParticlePrefab: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
+--- !u!135 &1276314760391665717
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648824693393983345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.016
+  m_Center: {x: 0.0005, y: 0.0018202257, z: 0.0072275237}
 --- !u!1001 &7913588030058310778
 PrefabInstance:
   m_ObjectHideFlags: 0
