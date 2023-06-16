@@ -57,29 +57,31 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
         playerInput = gameObject.GetComponent<PlayerInput>();
         Debug.Log(playerInput.playerIndex);
-        Debug.Log(playerInput.currentControlScheme);
+        // Debug.Log(InputDevice.all[playerInput.playerIndex]);
+        // Debug.Log(InputSystem.devices[playerInput.playerIndex]);
+
+        Debug.Log(this + playerInput.currentControlScheme);
     }
 
     void Update()
     {    
         if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
-            Cursor.visible = true;
+            if(playerInput.currentControlScheme == "Keyboard")
+            {
+                Vector3 mousePos = Input.mousePosition;
+                mousePos.z = 11f;
+                Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
                 
-            Vector3 mousePos = Input.mousePosition;
-            mousePos.z = 11f;
-            Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
-            
-            Vector3 turretOrientation = worldMouse - turret.position;
-            turretOrientation.y = 0f;
-            turret.forward = turretOrientation;
+                Vector3 turretOrientation = worldMouse - turret.position;
+                turretOrientation.y = 0f;
+                turret.forward = turretOrientation;
+            }
         }
         else if(rotationInput.x != 0 || rotationInput.y != 0)
         {
-            Cursor.visible = false;
             Vector3 lookDirection = new Vector3(rotationInput.x, 0, rotationInput.y);
             turret.transform.rotation = Quaternion.LookRotation(lookDirection);
         }
@@ -105,7 +107,6 @@ public class PlayerController : MonoBehaviour
 
         if(canMove == true)
         {
-            // if(Input.GetAxis("Vertical") != 0)
             if(movementInput.y != 0 && isMoving == false)
             {
                 trigger.enabled = true;
@@ -119,7 +120,6 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(activeCorountine);
             }
 
-            // if(Input.GetAxis("Horizontal") != 0)
             if(movementInput.y == 0)
             {
                 if(movementInput.x != 0 && isMoving == false)
@@ -143,16 +143,10 @@ public class PlayerController : MonoBehaviour
                 isAccelerating = true;
         }
 
-        // if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0)
         if(movementInput.x == 0 && movementInput.y == 0)
         {
             isAccelerating = false;
         }
-
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y);
-
-        // Debug.Log(move);
-
 
         if(isGrinding)
         {
