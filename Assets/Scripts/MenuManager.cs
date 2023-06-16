@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class TestScript : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     public PlayerInputManager pim;
 
