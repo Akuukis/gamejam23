@@ -49,6 +49,7 @@ MonoBehaviour:
   moveSpeed: 18
   spawnAtFrom: 50
   spawnAtTo: 300
+  spawnStep: 1
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -105,6 +106,7 @@ MonoBehaviour:
   moveSpeed: 18
   spawnAtFrom: 50
   spawnAtTo: 300
+  spawnStep: 1
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -200,6 +202,7 @@ MonoBehaviour:
   moveSpeed: 18
   spawnAtFrom: 50
   spawnAtTo: 300
+  spawnStep: 1
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -259,6 +262,7 @@ MonoBehaviour:
   moveSpeed: 18
   spawnAtFrom: 50
   spawnAtTo: 300
+  spawnStep: 1
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -318,6 +322,7 @@ MonoBehaviour:
   moveSpeed: 18
   spawnAtFrom: 50
   spawnAtTo: 300
+  spawnStep: 1
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}

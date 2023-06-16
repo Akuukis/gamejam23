@@ -8,6 +8,7 @@ public class MoveableSpawner : MonoBehaviour
     public float moveSpeed = 12f;
     public float spawnAtFrom = 20f;
     public float spawnAtTo = 20f;
+    public float spawnStep = 10f;
     public float despawnAt = -10f;
     public List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
     protected float totalWeight = 0;
@@ -29,7 +30,7 @@ public class MoveableSpawner : MonoBehaviour
         GameObject newGameObject = Instantiate(getWeightedRandomSpawnable().gameObject, transform);
         Moveable moveable = newGameObject.AddComponent(typeof(Moveable)) as Moveable;
         float newDistance = Time.time * moveSpeed;
-        moveable.distance = newDistance + Random.Range(spawnAtFrom, spawnAtTo) + offset;
+        moveable.distance = Mathf.Round((newDistance + Random.Range(spawnAtFrom, spawnAtTo) + offset)  / spawnStep) * spawnStep;
         moveable.moveSpeed = moveSpeed;
         moveable.despawnAt = despawnAt;
         moveable.spawner = transform.gameObject.GetComponent<MoveableSpawner>();
