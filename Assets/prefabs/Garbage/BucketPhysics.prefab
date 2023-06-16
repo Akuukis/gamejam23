@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 3
+  impactDamage: 5
   impactParticlePrefab: {fileID: 1348631928614724, guid: 250e86a7819757142b6510e936ec4abf, type: 3}
 --- !u!65 &7415227034523108607
 BoxCollider:

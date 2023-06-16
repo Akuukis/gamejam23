@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: a33a962988263fa40968d17a7cd5a195, type: 3}
 --- !u!135 &3146403434859364392
 SphereCollider:

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
 --- !u!65 &4051361280172313096
 BoxCollider:
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: a33a962988263fa40968d17a7cd5a195, type: 3}
 --- !u!135 &1763636586349155793
 SphereCollider:
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: a33a962988263fa40968d17a7cd5a195, type: 3}
 --- !u!135 &6975930377444083266
 SphereCollider:
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
 --- !u!135 &6858331229129717359
 SphereCollider:
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: a33a962988263fa40968d17a7cd5a195, type: 3}
 --- !u!135 &829774912686483335
 SphereCollider:
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 10
   impactParticlePrefab: {fileID: 4914716930404006884, guid: a33a962988263fa40968d17a7cd5a195, type: 3}
 --- !u!135 &390064112171900115
 SphereCollider:
