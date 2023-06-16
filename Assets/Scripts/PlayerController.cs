@@ -49,12 +49,6 @@ public class PlayerController : MonoBehaviour
         rotationInput = context.ReadValue<Vector2>();
     }
 
-    public void OnThrow(InputAction.CallbackContext context)
-    {
-        // threw = context.ReadValue<bool>();
-        threw = context.action.triggered;
-    }
-
     void Start()
     {
         playerInput = gameObject.GetComponent<PlayerInput>();
@@ -66,12 +60,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {    
-        if(threw || playerInput.currentControlScheme == "Keyboard" && Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(playerInput.playerIndex + "Pew");
-        }
-
+    {
         if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
         {
             if(playerInput.currentControlScheme == "Keyboard")

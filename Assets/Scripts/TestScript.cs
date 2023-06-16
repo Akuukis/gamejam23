@@ -24,19 +24,14 @@ public class TestScript : MonoBehaviour
     public GameObject[] buttons;
     public GameObject[] players;
 
-    private int i;
-
     void Start()
     {
-        i = 0;
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(buttons[i]);
+        EventSystem.current.SetSelectedGameObject(buttons[0]);
     }
 
-    public void CycleButtons()
+    public void CycleButtons(int i)
     {
-        i++;
-        Debug.Log(i);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(buttons[i]);
     }
@@ -70,6 +65,11 @@ public class TestScript : MonoBehaviour
             Destroy(player);
 
         GetPlayers();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     void SetPlayerTransform(Transform player)

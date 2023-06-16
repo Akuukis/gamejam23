@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 3820877368477078963}
   - component: {fileID: 1365870752}
   - component: {fileID: 3820877368477078972}
-  - component: {fileID: 3571807987266892571}
+  - component: {fileID: 4375666845309366738}
   - component: {fileID: 3820877368477078966}
   - component: {fileID: 3820877368477078962}
   - component: {fileID: 3820877368477078973}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
---- !u!114 &3571807987266892571
+--- !u!114 &4375666845309366738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c89b1e6836347343b96a7d9c44af354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  xValue: 1
+  movementSpeed: 7.5
+  xValue: 2
   zValue: 1
-  impactDelay: 0.5
+  impactDelay: 0.1
   isAccelerating: 0
   isMoving: 0
   isGrinding: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   isReturning: 0
   turret: {fileID: 989659306249543737}
   col: {fileID: 3820877368477078966}
-  trigger: {fileID: 3820877368477078966}
+  trigger: {fileID: 3820877368477078973}
   oldPosition: {x: 0, y: 0, z: 0}
   playerInput: {fileID: 0}
 --- !u!65 &3820877368477078966
@@ -191,7 +191,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3820877368477078964}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3571807987266892571}
+      - m_Target: {fileID: 4375666845309366738}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -239,7 +239,7 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3571807987266892571}
+      - m_Target: {fileID: 4375666845309366738}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: SetCursor
         m_Mode: 0
@@ -255,8 +255,8 @@ MonoBehaviour:
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3571807987266892571}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 3091356009458137594}
+        m_TargetAssemblyTypeName: AnimatorControllerOrk, Assembly-CSharp
         m_MethodName: OnThrow
         m_Mode: 0
         m_Arguments:
@@ -1130,6 +1130,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7368447581454324838, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}
   m_PrefabInstance: {fileID: 7780537818933245023}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3091356009458137594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4691825045092650405, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}
+  m_PrefabInstance: {fileID: 7780537818933245023}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb71470b194d7c4e95f3a00fcdecda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8347958448085599003
 PrefabInstance:
   m_ObjectHideFlags: 0

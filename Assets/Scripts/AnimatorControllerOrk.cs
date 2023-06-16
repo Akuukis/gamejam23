@@ -27,7 +27,7 @@ public class AnimatorControllerOrk : MonoBehaviour
         // Example: Trigger an animation
         if(threw || transform.parent.parent.parent.GetComponent<PlayerInput>().currentControlScheme == "Keyboard" && Input.GetMouseButtonDown(0))
         {
-            Debug.Log("PEW");
+            Debug.Log(this + "PEW");
             if (objectThrower.isReady == true)
             {
                 // Set the "Throw" trigger parameter to play the throw animation
