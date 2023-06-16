@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2752909401590712980}
   - component: {fileID: 2752909401590712982}
   - component: {fileID: 5867167874810582572}
+  - component: {fileID: -6420676974275190987}
   m_Layer: 0
   m_Name: WarningSign
   m_TagString: Untagged
@@ -60,6 +61,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticlePrefab: {fileID: 1905575953860520, guid: f73afd53ee73a4040bf224699b896846, type: 3}
+--- !u!114 &-6420676974275190987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752909401590712981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnWeight: 1
 --- !u!1001 &2752909401216162691
 PrefabInstance:
   m_ObjectHideFlags: 0

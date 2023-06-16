@@ -10,22 +10,18 @@ public class MoveableSpawner : MonoBehaviour
     public float spawnChance = 1f;
     public float spawnAt = 10f;
     public float despawnAt = -10f;
-    protected List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
+    public List<MoveableSpawnable> spawnables = new List<MoveableSpawnable>();
     protected float distanceLastStep = 0;
     protected float distanceLastSpawn = -9999;
     protected float totalWeight = 0;
 
     protected void Start()
     {
-        foreach (Transform child in transform)
+        foreach (MoveableSpawnable spawnable in spawnables)
         {
-            MoveableSpawnable spawnable = child.GetComponent<MoveableSpawnable>();
-            if(spawnable == null) continue;
-
-            spawnables.Add(spawnable);
             totalWeight += spawnable.spawnWeight;
-            spawnable.gameObject.SetActive(false);
         }
+
 
         if(prespawn)
         {
