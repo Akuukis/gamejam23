@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd196d9ffd6b851468463a0b540098b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactDamage: 5
+  impactDamage: 15
   impactParticlePrefab: {fileID: 1905575953860520, guid: f73afd53ee73a4040bf224699b896846, type: 3}
 --- !u!136 &7761892057115129949
 CapsuleCollider:
