@@ -18,7 +18,7 @@ public class TestScript : MonoBehaviour
             pim.JoinPlayer();
     }
 
-    private void OnPlayerJoined(PlayerInput playerInput)
+    public void OnPlayerJoined(PlayerInput playerInput)
     {
         Debug.Log("New PLayer");
         SetPlayerTransform(playerInput.transform);
@@ -27,6 +27,6 @@ public class TestScript : MonoBehaviour
     void SetPlayerTransform(Transform player)
     {
         player.position = spawn;
-        spawn = new Vector3(7, 0, 0);
+        spawn = new Vector3(3.5f, 0, 0);
     }
 }

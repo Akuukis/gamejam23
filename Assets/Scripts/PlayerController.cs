@@ -60,12 +60,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
         playerInput = gameObject.GetComponent<PlayerInput>();
         Debug.Log(playerInput.playerIndex);
-    }
-
-    private void OnPlayerJoined(PlayerInput playerInput)
-    {
-        Debug.Log("New PLayer");
-        // SetPlayerTransform(playerInput.transform);
+        Debug.Log(playerInput.currentControlScheme);
     }
 
     void Update()
