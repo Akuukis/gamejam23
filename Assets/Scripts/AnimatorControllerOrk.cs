@@ -18,9 +18,9 @@ public class AnimatorControllerOrk : MonoBehaviour
     void Update()
     {
         // Example: Trigger an animation
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && objectThrower.isReady == true)
         {
-            // Set the "Jump" trigger parameter to play the jump animation
+            // Set the "Throw" trigger parameter to play the throw animation
             animator.SetTrigger("Throw");
 			objectThrower.ThrowObject();
 			Debug.Log("This is a log message.");
