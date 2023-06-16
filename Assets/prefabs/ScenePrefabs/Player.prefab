@@ -240,8 +240,8 @@ MonoBehaviour:
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/position,/VirtualMouse/position,/VirtualMouse1/position,/VirtualMouse2/position,/VirtualMouse3/position,/VirtualMouse4/position,/VirtualMouse5/position,/VirtualMouse6/position,/VirtualMouse7/position,/VirtualMouse8/position,/VirtualMouse9/position,/VirtualMouse10/position,/VirtualMouse11/position,/VirtualMouse12/position,/VirtualMouse13/position,/VirtualMouse14/position,/VirtualMouse15/position,/VirtualMouse16/position,/VirtualMouse17/position,/VirtualMouse18/position,/VirtualMouse19/position,/VirtualMouse20/position,/VirtualMouse21/position,/VirtualMouse22/position,/VirtualMouse23/position,/VirtualMouse24/position,/VirtualMouse25/position,/VirtualMouse26/position,/VirtualMouse27/position,/VirtualMouse28/position,/VirtualMouse29/position,/VirtualMouse30/position,/VirtualMouse31/position,/VirtualMouse32/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2881418111368829772}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 5084920026186771062}
+        m_TargetAssemblyTypeName: AnimatorControllerOrk, Assembly-CSharp
         m_MethodName: OnThrow
         m_Mode: 0
         m_Arguments:
@@ -1035,6 +1035,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}
+--- !u!114 &5084920026186771062 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4691825045092650405, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}
+  m_PrefabInstance: {fileID: 544361436049483731}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fb71470b194d7c4e95f3a00fcdecda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7047018368558003125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7368447581454324838, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}

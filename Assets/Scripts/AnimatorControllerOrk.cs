@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AnimatorControllerOrk : MonoBehaviour
 {
     private Animator animator;
 	public ObjectThrower objectThrower;
+    private bool threw = false;
+
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        threw = context.action.triggered;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +25,16 @@ public class AnimatorControllerOrk : MonoBehaviour
     void Update()
     {
         // Example: Trigger an animation
-        if (Input.GetKeyDown(KeyCode.Space) && objectThrower.isReady == true)
+        if(threw || transform.parent.parent.parent.GetComponent<PlayerInput>().currentControlScheme == "Keyboard" && Input.GetMouseButtonDown(0))
         {
-            // Set the "Throw" trigger parameter to play the throw animation
-            animator.SetTrigger("Throw");
-			objectThrower.ThrowObject();
-			Debug.Log("This is a log message.");
+            Debug.Log("PEW");
+            if (objectThrower.isReady == true)
+            {
+                // Set the "Throw" trigger parameter to play the throw animation
+                animator.SetTrigger("Throw");
+                objectThrower.ThrowObject();
+                Debug.Log("This is a log message.");
+            }
         }
-
     }
 }
