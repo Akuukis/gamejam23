@@ -65,13 +65,20 @@ public class PlayerController : MonoBehaviour
         {
             if(playerInput.currentControlScheme == "Keyboard")
             {
-                Vector3 mousePos = Input.mousePosition;
-                mousePos.z = 11f;
-                Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
+                // Vector3 mousePos = Input.mousePosition;
+                // mousePos.z = 11f;
+                // Vector3 worldMouse = Camera.main.ScreenToWorldPoint(mousePos);
                 
-                Vector3 turretOrientation = worldMouse - turret.position;
-                turretOrientation.y = 0f;
-                turret.forward = turretOrientation;
+                // Vector3 turretOrientation = worldMouse - turret.position;
+                // turretOrientation.y = 0f;
+                // turret.forward = turretOrientation;
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100))
+                {
+                    turret.transform.LookAt(hit.point);
+                }
             }
         }
         else if(rotationInput.x != 0 || rotationInput.y != 0)
