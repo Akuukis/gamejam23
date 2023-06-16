@@ -25,7 +25,7 @@ public class PlayerImpact : MonoBehaviour
     void Update()
     {
         Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 toOther = player.position - transform.position;
+        // Vector3 toOther = player.position - transform.position;
     }
 
     public void GotHit()
