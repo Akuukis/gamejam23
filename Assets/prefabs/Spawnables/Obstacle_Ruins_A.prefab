@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34539e8db7ac05a4683a9556d73a9726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnWeight: 1
+  spawnWeight: 2
 --- !u!1 &6472289703328649753
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +75,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6472289703328649753}
   m_LocalRotation: {x: -0.49505153, y: 0.50490004, z: 0.5049, w: 0.49505156}
-  m_LocalPosition: {x: 0.73, y: 0, z: 0.03}
+  m_LocalPosition: {x: 0.73, y: 0, z: 25}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752909401590712980, guid: 95824b7773c46ec46bae19345b34a6e2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2752909401590712980, guid: 95824b7773c46ec46bae19345b34a6e2, type: 3}
       propertyPath: m_LocalRotation.w

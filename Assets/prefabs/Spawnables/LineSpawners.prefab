@@ -46,10 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 20
+  moveSpeed: 16
   spawnAtFrom: 50
-  spawnAtTo: 150
-  despawnAt: -10
+  spawnAtTo: 500
+  despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
   - {fileID: -8572577686016312061, guid: 55d59eead06c9074f80cef74f01f7762, type: 3}
@@ -105,10 +105,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 20
+  moveSpeed: 16
   spawnAtFrom: 50
-  spawnAtTo: 150
-  despawnAt: -10
+  spawnAtTo: 500
+  despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
   - {fileID: -8572577686016312061, guid: 55d59eead06c9074f80cef74f01f7762, type: 3}
@@ -200,10 +200,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 20
+  moveSpeed: 16
   spawnAtFrom: 50
-  spawnAtTo: 150
-  despawnAt: -10
+  spawnAtTo: 500
+  despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
   - {fileID: -8572577686016312061, guid: 55d59eead06c9074f80cef74f01f7762, type: 3}
@@ -259,10 +259,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 20
+  moveSpeed: 16
   spawnAtFrom: 50
-  spawnAtTo: 150
-  despawnAt: -10
+  spawnAtTo: 500
+  despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
   - {fileID: -8572577686016312061, guid: 55d59eead06c9074f80cef74f01f7762, type: 3}
@@ -318,10 +318,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 20
+  moveSpeed: 16
   spawnAtFrom: 50
-  spawnAtTo: 150
-  despawnAt: -10
+  spawnAtTo: 500
+  despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
   - {fileID: -8572577686016312061, guid: 55d59eead06c9074f80cef74f01f7762, type: 3}
