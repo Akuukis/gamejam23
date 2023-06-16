@@ -46,19 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 16
+  moveSpeed: 18
   spawnAtFrom: 50
-  spawnAtTo: 500
+  spawnAtTo: 300
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
-  - {fileID: -8572577686016312061, guid: 55d59eead06c9074f80cef74f01f7762, type: 3}
-  - {fileID: -4087613414810447278, guid: 013a4921261b51d4090e2776c4e0369f, type: 3}
-  - {fileID: -6247080953611343099, guid: b4c9c6852508a6a40bc2f79147f77905, type: 3}
-  - {fileID: -4002794201276034898, guid: 57a297da1e7a8054db6c63d82fcda9f0, type: 3}
   - {fileID: -998749100641704130, guid: 8434bfb9cc156af4b97654ed5f40f8dc, type: 3}
   - {fileID: -1858969666904570788, guid: 2b6c749abbb47b043b6cb6efce11b75c, type: 3}
   - {fileID: 1095167655974763155, guid: f325a44d34b016c48b2d40586404635f, type: 3}
+  - {fileID: -4002794201276034898, guid: 19a15078000f0a24f8afd4acad4a8b12, type: 3}
 --- !u!1 &2685320066012602431
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,9 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 16
+  moveSpeed: 18
   spawnAtFrom: 50
-  spawnAtTo: 500
+  spawnAtTo: 300
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -200,9 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 16
+  moveSpeed: 18
   spawnAtFrom: 50
-  spawnAtTo: 500
+  spawnAtTo: 300
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -259,9 +256,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 16
+  moveSpeed: 18
   spawnAtFrom: 50
-  spawnAtTo: 500
+  spawnAtTo: 300
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -271,7 +268,7 @@ MonoBehaviour:
   - {fileID: -4002794201276034898, guid: 57a297da1e7a8054db6c63d82fcda9f0, type: 3}
   - {fileID: -998749100641704130, guid: 8434bfb9cc156af4b97654ed5f40f8dc, type: 3}
   - {fileID: -1858969666904570788, guid: 2b6c749abbb47b043b6cb6efce11b75c, type: 3}
-  - {fileID: 1095167655974763155, guid: f325a44d34b016c48b2d40586404635f, type: 3}
+  - {fileID: 1095167655974763155, guid: 4f0bdc2ce42f78842bac64deee6346d2, type: 3}
 --- !u!1 &9215149369008168679
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,9 +315,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prespawnCount: 1
   prespawnOffset: 10
-  moveSpeed: 16
+  moveSpeed: 18
   spawnAtFrom: 50
-  spawnAtTo: 500
+  spawnAtTo: 300
   despawnAt: -40
   spawnables:
   - {fileID: 1095167655974763155, guid: 4b33f544ea81db744b61edab6418734c, type: 3}
@@ -330,4 +327,4 @@ MonoBehaviour:
   - {fileID: -4002794201276034898, guid: 57a297da1e7a8054db6c63d82fcda9f0, type: 3}
   - {fileID: -998749100641704130, guid: 8434bfb9cc156af4b97654ed5f40f8dc, type: 3}
   - {fileID: -1858969666904570788, guid: 2b6c749abbb47b043b6cb6efce11b75c, type: 3}
-  - {fileID: 1095167655974763155, guid: f325a44d34b016c48b2d40586404635f, type: 3}
+  - {fileID: 1095167655974763155, guid: 4f0bdc2ce42f78842bac64deee6346d2, type: 3}

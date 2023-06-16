@@ -1120,10 +1120,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7555032226694422644, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}
-      propertyPath: throwForce
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7555032226694422644, guid: 062d807f950c1f446aac0fb3e6528434, type: 3}
       propertyPath: objectToThrow
       value: 
       objectReference: {fileID: 4337602974624761038, guid: c4c734202e7ebdf4f8810b24d16c35f4, type: 3}
